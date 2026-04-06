@@ -1,0 +1,9 @@
+{
+  "name": "savingsclub",
+  "version": "1.0.0",
+  "description": "SavingsClub - Smart Money Decisions for Real People",
+  "private": true,
+  "scripts": {
+    "generate": "node generate-post.js"
+  }
+}
