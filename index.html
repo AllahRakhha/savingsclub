@@ -185,6 +185,34 @@ h3{font-size:clamp(1.15rem,2.2vw,1.5rem)}
 .apply-btn{display:block;background:var(--green);color:var(--white);padding:12px;border-radius:var(--radius);font-weight:700;font-size:.9rem;transition:var(--transition);text-align:center;width:100%}
 .apply-btn:hover{background:#059669;transform:translateY(-1px)}
 
+/* Quiz */
+.quiz-step{animation:fadeIn .3s ease}
+.quiz-options{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.quiz-opt{display:flex;align-items:center;gap:14px;padding:18px 20px;border:2px solid var(--gray-100);border-radius:var(--radius);cursor:pointer;transition:var(--transition);background:var(--white)}
+.quiz-opt:hover{border-color:var(--purple);background:var(--purple-bg);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.quiz-opt.selected{border-color:var(--purple);background:var(--purple-bg)}
+.quiz-match-card{background:var(--white);border:2px solid var(--gray-100);border-radius:var(--radius-lg);padding:24px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:20px;transition:var(--transition)}
+.quiz-match-card:first-child{border-color:var(--gold);background:linear-gradient(135deg,rgba(245,166,35,.04),rgba(107,53,200,.04))}
+.quiz-match-card .match-info h3{margin-bottom:4px}
+.quiz-match-card .match-badge{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px}
+.quiz-match-card .match-badge.best{background:var(--gold);color:var(--navy)}
+.quiz-match-card .match-badge.great{background:var(--purple-bg);color:var(--purple)}
+.quiz-match-card .match-details{font-size:.86rem;color:var(--gray-400);margin-top:6px}
+@media(max-width:768px){.quiz-options{grid-template-columns:1fr}.quiz-match-card{flex-direction:column;text-align:center}}
+
+/* Financial Health Score */
+.fhs-opt{display:flex;align-items:center;gap:14px;padding:16px 20px;border:2px solid var(--gray-100);border-radius:var(--radius);cursor:pointer;transition:var(--transition);background:var(--white);margin-bottom:10px}
+.fhs-opt:hover{border-color:var(--purple);background:var(--purple-bg);transform:translateY(-1px)}
+.fhs-opt.selected{border-color:var(--purple);background:var(--purple-bg)}
+.fhs-cat{padding:16px 20px;background:var(--white);border-radius:var(--radius);border:1px solid var(--gray-100);margin-bottom:10px}
+.fhs-cat-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.fhs-cat-head h4{font-size:.92rem}
+.fhs-cat-score{font-weight:800;font-size:.92rem}
+.fhs-tip{padding:16px 20px;border-radius:var(--radius);border:1px solid var(--gray-100);margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
+.fhs-tip.good{background:var(--green-bg);border-color:rgba(16,185,129,.2)}
+.fhs-tip.warn{background:rgba(245,166,35,.06);border-color:rgba(245,166,35,.2)}
+.fhs-tip.urgent{background:var(--red-bg);border-color:rgba(239,68,68,.2)}
+
 /* Deals */
 .deal-card{background:var(--white);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow-sm);border:1px solid var(--gray-100);text-align:center;transition:var(--transition)}
 .deal-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
@@ -534,17 +562,113 @@ h3{font-size:clamp(1.15rem,2.2vw,1.5rem)}
 <div class="cc-table-wrap"><table class="cc-table"><thead><tr><th>Card Name</th><th>APR</th><th>Annual Fee</th><th>Rewards</th><th>Best For</th><th>Apply</th></tr></thead><tbody id="ccTbody"></tbody></table></div>
 <p style="font-size:.82rem;color:var(--gray-400);margin-top:14px;padding:12px;background:var(--bg);border-radius:var(--radius-sm)">Rates shown are approximate. Always verify current rates with the card issuer. SavingsClub may earn a commission.</p>
 </div>
-</div></section>
-<!-- ADSENSE SLOT — SIDEBAR -->
+
+<!-- Financial Health Score -->
+<div class="tool-card" style="border:2px solid var(--purple);position:relative;overflow:hidden">
+<div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--purple),var(--gold))"></div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:6px"><span style="font-size:1.6rem">🏥</span><h2 style="margin:0">Financial Health Score</h2></div>
+<p style="color:var(--gray-400);margin-bottom:24px">Answer 10 quick questions about your finances and get a personalized score from 0-100 with actionable tips to improve. Takes about 2 minutes.</p>
+
+<div id="fhsQuiz">
+<div id="fhsQ" style="min-height:120px"></div>
+<div style="margin-top:20px">
+<div style="display:flex;justify-content:space-between;font-size:.82rem;color:var(--gray-400);margin-bottom:6px"><span id="fhsStepLabel">Question 1 of 10</span><span id="fhsPctLabel">10%</span></div>
+<div class="progress-bar"><div class="fill-gold" id="fhsBar" style="width:10%"></div></div>
+</div>
 </div>
 
-<!-- ===== CREDIT CARDS ===== -->
+<div id="fhsResults" style="display:none">
+<div style="text-align:center;margin-bottom:28px">
+<div id="fhsScoreRing" style="width:160px;height:160px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;flex-direction:column;border:8px solid var(--gray-100);position:relative">
+<span id="fhsScoreNum" style="font-size:2.8rem;font-weight:800;color:var(--navy)">0</span>
+<span style="font-size:.8rem;color:var(--gray-400);font-weight:600">out of 100</span>
+</div>
+<h3 id="fhsGrade" style="margin-bottom:4px">Calculating...</h3>
+<p id="fhsGradeDesc" style="color:var(--gray-400);font-size:.92rem"></p>
+</div>
+
+<div id="fhsBreakdown" style="margin-bottom:24px"></div>
+
+<h3 style="margin-bottom:14px">Your Personalized Action Plan</h3>
+<div id="fhsTips"></div>
+
+<div style="text-align:center;margin-top:24px">
+<button class="btn btn-outline-purple btn-sm" onclick="resetFHS()">Retake Assessment</button>
+</div>
+<p style="font-size:.78rem;color:var(--gray-400);margin-top:14px;text-align:center">This score is for educational purposes only and is not a credit score or professional financial assessment. For personalized advice, consult a licensed financial advisor.</p>
+</div>
+</div>
+
+</div></section>
 <div class="page" id="page-cards">
 <section class="hero" style="padding:110px 0 56px">
 <div class="container"><div style="background:#FFFBEB;border:1px solid #F59E0B;border-radius:10px;padding:14px 20px;margin-bottom:24px;font-size:.85rem;color:#92400E;"><strong>⚠️ Advertiser Disclosure:</strong> SavingsClub may earn a commission when you apply through our links at no extra cost to you. This does not affect our editorial ratings or recommendations.</div><div class="hero-content"><span class="section-tag" style="background:rgba(245,166,35,.15);color:var(--gold)">Credit Cards</span><h1>Find the Best Credit Card for <span>Your Life</span> — Updated 2026</h1><p>Expert-reviewed picks for every type of spender across all 50 states.</p></div></div></section>
 <section class="section">
 <div class="container">
 <p style="background:var(--purple-bg);padding:14px 18px;border-radius:var(--radius-sm);font-size:.84rem;color:var(--gray-400);margin-bottom:28px;border-left:4px solid var(--purple)">SavingsClub may earn a commission when you apply through our links at no extra cost to you. This does not influence our editorial ratings.</p>
+
+<!-- Credit Card Quiz -->
+<div class="tool-card" id="ccQuiz" style="margin-bottom:36px;border:2px solid var(--purple);position:relative;overflow:hidden">
+<div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--purple),var(--gold))"></div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:6px"><span style="font-size:1.6rem">🎯</span><h2 style="margin:0">Which Credit Card Is Right for You?</h2></div>
+<p style="color:var(--gray-400);margin-bottom:24px">Answer 4 quick questions and we'll match you with the best card for your spending style. Takes 30 seconds.</p>
+
+<!-- Quiz Steps -->
+<div id="quizStep1" class="quiz-step">
+<h3 style="margin-bottom:14px">Question 1 of 4: What's most important to you in a credit card?</h3>
+<div class="quiz-options" id="q1opts">
+<div class="quiz-opt" onclick="quizSelect(1,'cashback',this)"><span style="font-size:1.2rem">💵</span><div><strong>Cash Back</strong><br><span style="font-size:.84rem;color:var(--gray-400)">I want money back on everyday purchases</span></div></div>
+<div class="quiz-opt" onclick="quizSelect(1,'travel',this)"><span style="font-size:1.2rem">✈️</span><div><strong>Travel Rewards</strong><br><span style="font-size:.84rem;color:var(--gray-400)">I want points and miles for trips</span></div></div>
+<div class="quiz-opt" onclick="quizSelect(1,'nofee',this)"><span style="font-size:1.2rem">🆓</span><div><strong>No Annual Fee</strong><br><span style="font-size:.84rem;color:var(--gray-400)">I don't want to pay a yearly fee</span></div></div>
+<div class="quiz-opt" onclick="quizSelect(1,'build',this)"><span style="font-size:1.2rem">📈</span><div><strong>Build Credit</strong><br><span style="font-size:.84rem;color:var(--gray-400)">I'm new to credit or rebuilding</span></div></div>
+</div></div>
+
+<div id="quizStep2" class="quiz-step" style="display:none">
+<h3 style="margin-bottom:14px">Question 2 of 4: What's your estimated credit score?</h3>
+<div class="quiz-options" id="q2opts">
+<div class="quiz-opt" onclick="quizSelect(2,'excellent',this)"><span style="font-size:1.2rem">🌟</span><div><strong>Excellent (740+)</strong><br><span style="font-size:.84rem;color:var(--gray-400)">I have great credit</span></div></div>
+<div class="quiz-opt" onclick="quizSelect(2,'good',this)"><span style="font-size:1.2rem">👍</span><div><strong>Good (670-739)</strong><br><span style="font-size:.84rem;color:var(--gray-400)">My credit is solid</span></div></div>
+<div class="quiz-opt" onclick="quizSelect(2,'fair',this)"><span style="font-size:1.2rem">🔄</span><div><strong>Fair (580-669)</strong><br><span style="font-size:.84rem;color:var(--gray-400)">I'm working on improving it</span></div></div>
+<div class="quiz-opt" onclick="quizSelect(2,'none',this)"><span style="font-size:1.2rem">🆕</span><div><strong>No Credit / New</strong><br><span style="font-size:.84rem;color:var(--gray-400)">I haven't built credit yet</span></div></div>
+</div></div>
+
+<div id="quizStep3" class="quiz-step" style="display:none">
+<h3 style="margin-bottom:14px">Question 3 of 4: Where do you spend the most money?</h3>
+<div class="quiz-options" id="q3opts">
+<div class="quiz-opt" onclick="quizSelect(3,'groceries',this)"><span style="font-size:1.2rem">🛒</span><div><strong>Groceries & Gas</strong><br><span style="font-size:.84rem;color:var(--gray-400)">Supermarkets and fuel stations</span></div></div>
+<div class="quiz-opt" onclick="quizSelect(3,'dining',this)"><span style="font-size:1.2rem">🍽️</span><div><strong>Dining & Entertainment</strong><br><span style="font-size:.84rem;color:var(--gray-400)">Restaurants, streaming, going out</span></div></div>
+<div class="quiz-opt" onclick="quizSelect(3,'travel',this)"><span style="font-size:1.2rem">🏨</span><div><strong>Travel & Hotels</strong><br><span style="font-size:.84rem;color:var(--gray-400)">Flights, hotels, car rentals</span></div></div>
+<div class="quiz-opt" onclick="quizSelect(3,'everything',this)"><span style="font-size:1.2rem">🔀</span><div><strong>A Little of Everything</strong><br><span style="font-size:.84rem;color:var(--gray-400)">I want rewards on all purchases equally</span></div></div>
+</div></div>
+
+<div id="quizStep4" class="quiz-step" style="display:none">
+<h3 style="margin-bottom:14px">Question 4 of 4: Would you pay an annual fee for better rewards?</h3>
+<div class="quiz-options" id="q4opts">
+<div class="quiz-opt" onclick="quizSelect(4,'yes',this)"><span style="font-size:1.2rem">✅</span><div><strong>Yes, if the rewards are worth it</strong><br><span style="font-size:.84rem;color:var(--gray-400)">I'll pay a fee for premium perks</span></div></div>
+<div class="quiz-opt" onclick="quizSelect(4,'no',this)"><span style="font-size:1.2rem">❌</span><div><strong>No, I want $0 annual fee</strong><br><span style="font-size:.84rem;color:var(--gray-400)">Keep it free</span></div></div>
+</div></div>
+
+<!-- Quiz Progress Bar -->
+<div id="quizProgress" style="margin-top:20px">
+<div style="display:flex;justify-content:space-between;font-size:.82rem;color:var(--gray-400);margin-bottom:6px"><span id="quizStepLabel">Step 1 of 4</span><span id="quizPctLabel">25%</span></div>
+<div class="progress-bar"><div class="fill-purple" id="quizBar" style="width:25%"></div></div>
+</div>
+
+<!-- Quiz Results -->
+<div id="quizResults" style="display:none">
+<div style="text-align:center;margin-bottom:24px">
+<span style="font-size:2.5rem">🎉</span>
+<h3 style="margin-top:8px">Your Perfect Card Match</h3>
+<p style="color:var(--gray-400)">Based on your answers, we recommend these cards for you:</p>
+</div>
+<div id="quizMatches"></div>
+<div style="text-align:center;margin-top:20px">
+<button class="btn btn-outline-purple btn-sm" onclick="resetQuiz()">Retake Quiz</button>
+</div>
+<p style="font-size:.78rem;color:var(--gray-400);margin-top:14px;text-align:center">Card recommendations are based on publicly available information. SavingsClub may earn a commission from applications. Always verify current terms with the card issuer.</p>
+</div>
+</div>
+
 <!-- ADSENSE SLOT — MID CONTENT -->
 <div class="grid-2" id="ccGrid"></div>
 </div></section>
@@ -584,8 +708,8 @@ h3{font-size:clamp(1.15rem,2.2vw,1.5rem)}
 <h2>3. How We Use Information</h2><ul><li>Personalizing content and recommendations</li><li>Serving targeted ads via Google AdSense</li><li>Improving tools and user experience</li><li>Email marketing and newsletters</li><li>Analytics and performance monitoring</li><li>Sharing with affiliate partners</li></ul>
 <h2>4. How We Share Information</h2><ul><li><strong>Google AdSense:</strong> Cookies for behavioral targeting and remarketing</li><li><strong>Affiliate Partners:</strong> Credit card companies, banks, insurance providers</li><li><strong>Email Platforms:</strong> Third-party email service providers</li><li><strong>Analytics:</strong> Google Analytics and similar services</li><li><strong>Ad Networks:</strong> Interest-based advertising partners</li></ul>
 <h2>5. Affiliate Disclosure</h2><p>SavingsClub earns compensation through affiliate relationships. When you click affiliate links and apply for products, we may receive a commission. This may influence product placement but not editorial integrity.</p>
-<h2>6. Your Rights</h2><h3>California (CCPA/CPRA)</h3><p>California residents may: know what we collect, request deletion, opt out of data sale, and not face discrimination for exercising rights. Contact privacy@savingsclub.com.</p><h3>Other States</h3><p>Residents of Virginia, Colorado, Texas, Florida and other states with privacy laws have similar rights. Contact privacy@savingsclub.com.</p>
-<h2>7. Opt Out</h2><p>Adjust browser cookies, use partner opt-out mechanisms, or contact privacy@savingsclub.com.</p>
+<h2>6. Your Rights</h2><h3>California (CCPA/CPRA)</h3><p>California residents may: know what we collect, request deletion, opt out of data sale, and not face discrimination for exercising rights. Contact <a href="mailto:privacy@savingsclub.com" style="color:var(--purple)">privacy@savingsclub.com</a>.</p><h3>Other States</h3><p>Residents of Virginia, Colorado, Texas, Florida and other states with privacy laws have similar rights. Contact <a href="mailto:privacy@savingsclub.com" style="color:var(--purple)">privacy@savingsclub.com</a>.</p>
+<h2>7. Opt Out</h2><p>Adjust browser cookies, use partner opt-out mechanisms, or contact <a href="mailto:privacy@savingsclub.com" style="color:var(--purple)">privacy@savingsclub.com</a>.</p>
 <h2>8. Data Retention & Security</h2><p>We retain data as long as needed for stated purposes and use commercially reasonable security measures.</p>
 <h2>9. Children's Privacy</h2><p>Not intended for children under 13. We don't knowingly collect data from children.</p>
 <h2>10. Changes</h2><p>We may update this policy. Continued use constitutes acceptance.</p>
@@ -809,7 +933,7 @@ h3{font-size:clamp(1.15rem,2.2vw,1.5rem)}
 </div>
 <div class="footer-bottom">
 <p>&copy; 2026 SavingsClub. All rights reserved.</p>
-<p class="footer-disclaimer">SavingsClub is not a licensed financial advisor. Content is for informational purposes only. We may earn compensation from partner links. Rates and offers subject to change. Always verify with provider.</p>
+<p class="footer-disclaimer">SavingsClub is not a licensed financial advisor. Content is for informational purposes only. We may earn compensation from partner links. Rates and offers subject to change. Always verify with provider. Questions? Contact us at <a href="mailto:info@savingsclub.com" style="color:var(--gold)">info@savingsclub.com</a></p>
 </div>
 </div></footer>
 <!-- ADSENSE SLOT — FOOTER -->
@@ -966,83 +1090,7 @@ function renderDeals(){
 }
 
 // ===== BLOG =====
-const generatedPosts=[{id:1775557960555,title:"Understanding APR vs APY: The Key to Making Smarter Financial Decisions",cat:"Tips",date:"April 7, 2026",preview:"Expert guide on understanding apr vs apy and why it matters for Americans in 2026.",content:`<p style="font-size:.82rem;color:#888;margin-bottom:16px">⚠️ Rates, offers, and financial information in this article reflect conditions as of early 2026. Always verify current information with providers before making financial decisions.</p>
-
-<h1>Understanding APR vs APY: The Key to Making Smarter Financial Decisions</h1>
-
-<p>Whether you're shopping for a mortgage in California or comparing savings accounts in Texas, you'll encounter two critical acronyms that can make or break your financial decisions: <strong>APR and APY</strong>. These percentage rates might look similar, but they work in completely opposite ways and can mean the difference between saving thousands or losing hundreds of dollars over time.</p>
-
-<p>Understanding APR vs APY isn't just financial jargon—it's essential knowledge that affects every major money decision you make. From the credit cards in your wallet to the high-yield savings account you're considering, these rates determine how much you'll pay or earn. Let's break down exactly what each means and why it matters for your financial future.</p>
-
-<h2>What Is APR and When Does It Apply?</h2>
-
-<p><strong>Annual Percentage Rate (APR)</strong> represents the yearly cost of borrowing money, including both the interest rate and additional fees. Think of APR as the "true cost" of a loan or credit product. When you're borrowing money—whether through a mortgage, auto loan, credit card, or personal loan—APR tells you exactly how much that borrowing will cost you each year.</p>
-
-<p>APR includes more than just the basic interest rate. It factors in origination fees, closing costs, discount points, and other charges that lenders might tack on. This is why APR is typically higher than the advertised interest rate, especially for mortgages and personal loans.</p>
-
-<h3>Real-World APR Examples</h3>
-
-<p>Let's say you're comparing two $20,000 auto loans in Florida. Lender A offers a 5.5% interest rate with no fees, while Lender B offers 5.0% interest but charges a $500 origination fee. Once you calculate the APR, Lender B's loan might actually cost more despite the lower interest rate.</p>
-
-<p>Credit cards work differently—they typically don't have upfront fees, so the APR and interest rate are usually the same. However, some cards charge annual fees or balance transfer fees that can affect your overall cost.</p>
-
-<h2>What Is APY and How It Boosts Your Savings</h2>
-
-<p><strong>Annual Percentage Yield (APY)</strong> shows how much your money will grow in a savings or investment account over one year, including the power of compound interest. Unlike APR, which costs you money, APY makes you money by showing the total return you'll earn on your deposits.</p>
-
-<p>APY accounts for compounding—when your interest earns interest. The more frequently an account compounds (daily vs. monthly vs. annually), the higher the APY compared to the base interest rate. This is why APY is always equal to or higher than the stated interest rate.</p>
-
-<h3>The Compounding Effect Across Different States</h3>
-
-<p>Whether you're saving in New York or Georgia, compounding works the same way, but the frequency matters. A savings account with 4.5% interest that compounds daily will have an APY of approximately 4.61%. That extra 0.11% might seem small, but on a $50,000 emergency fund, it means an additional $55 per year—enough to cover a nice dinner out.</p>
-
-<p>High-yield savings accounts and certificates of deposit (CDs) prominently display APY because it's the number that matters most to savers. Money market accounts, online savings accounts, and even some checking accounts use APY to show their earning potential.</p>
-
-<h2>Key Differences That Impact Your Money</h2>
-
-<p>The fundamental difference between APR and APY comes down to this: <strong>APR is what you pay, APY is what you earn</strong>. But there are several other crucial distinctions that affect your financial decisions.</p>
-
-<h3>Direction of Money Flow</h3>
-
-<p>APR represents money flowing out of your pocket to a lender. Whether you're getting a mortgage in Pennsylvania or a personal loan in Ohio, you want the lowest APR possible. APY represents money flowing into your account from a bank or credit union. Here, you want the highest APY available.</p>
-
-<h3>Fee Inclusion</h3>
-
-<p>APR includes various fees and costs, giving you a complete picture of borrowing costs. APY typically doesn't include monthly maintenance fees or minimum balance penalties that banks might charge on savings accounts. Always read the fine print to understand the total cost of your accounts.</p>
-
-<h3>Time Sensitivity</h3>
-
-<p>APR assumes you'll hold the loan for its full term, but many people refinance mortgages or pay off credit cards early. APY assumes you'll keep money in an account for a full year, but it's still useful for shorter periods since interest compounds regularly.</p>
-
-<h2>Making Smart Financial Decisions with APR and APY Knowledge</h2>
-
-<p>Understanding these rates helps you make better choices across all areas of your financial life. Here's how to apply this knowledge practically, no matter what state you live in.</p>
-
-<h3>For Borrowing Decisions</h3>
-
-<p>Always compare APRs, not just interest rates, when shopping for loans. A mortgage with a 6.5% interest rate but high closing costs might have a 6.8% APR, making it more expensive than a 6.7% interest rate loan with minimal fees.</p>
-
-<p>For credit cards, focus on APR if you carry balances month to month. If you pay your balance in full each month, the APR matters less than rewards and fees. Studies suggest that the average American carries a credit card balance, making APR a crucial factor for most consumers.</p>
-
-<h3>For Saving and Investing</h3>
-
-<p>When comparing savings accounts, certificates of deposit, or money market accounts, APY is your best friend. A difference of even 0.5% APY can mean hundreds or thousands of dollars over time, depending on your balance.</p>
-
-<p>Don't forget to factor in account minimums, fees, and accessibility. A savings account with 4.5% APY but a $10 monthly fee might be less attractive than one with 4.2% APY and no fees, especially for smaller balances.</p>
-
-<h3>The Tax Consideration</h3>
-
-<p>Remember that APY doesn't account for taxes on your earnings. Interest from savings accounts, CDs, and money market accounts is typically taxable as ordinary income. The higher your tax bracket, the more this affects your actual return.</p>
-
-<p>Financial experts recommend factoring in your tax rate when comparing different savings and investment options. A 4% APY savings account might only yield 3.2% after taxes for someone in the 20% tax bracket.</p>
-
-<p>Understanding APR vs APY empowers you to make informed financial decisions that can save or earn you significant money over time. Whether you're in Illinois comparing mortgage offers or in Michigan shopping for the best savings account, these rates are your guide to smart money management.</p>
-
-<div class="cta-box">
-<h3>Calculate Your Savings Potential</h3>
-<p>Ready to see how different APY rates can impact your savings goals? Use our Savings Calculator to compare different accounts and see exactly how compound interest can work for you over time.</p>
-<a href="#tools" class="btn btn-gold" onclick="showPage('tools')" style="margin-top:10px">Savings Calculator →</a>
-</div>`}]; // __GENERATED_POSTS__
+// __GENERATED_POSTS__
 function allPosts(){const custom=JSON.parse(localStorage.getItem('sc_custom2')||'[]');return[...blogs,...(typeof generatedPosts!=='undefined'?generatedPosts:[]),...custom]}
 function renderBlog(){
   const posts=allPosts();
@@ -1086,6 +1134,188 @@ function subNL(){const e=document.getElementById('nlEmail').value;if(!e||!e.incl
 function submitContact(){const n=document.getElementById('contactName').value,e=document.getElementById('contactEmail').value,m=document.getElementById('contactMsg').value;if(!n||!e||!m){alert('Please fill in all fields.');return}if(!e.includes('@')){alert('Please enter a valid email address.');return}alert('Thank you, '+n+'! Your message has been sent. We\'ll respond to '+e+' within 1-2 business days.');document.getElementById('contactName').value='';document.getElementById('contactEmail').value='';document.getElementById('contactMsg').value=''}
 
 // ===== AFFILIATE =====
+// ===== FINANCIAL HEALTH SCORE =====
+const fhsQuestions=[
+{q:"Do you have an emergency fund?",cat:"Emergency Fund",opts:[
+{t:"Yes, 3+ months of expenses saved",s:10},{t:"Yes, 1-2 months saved",s:7},{t:"Less than 1 month saved",s:4},{t:"No emergency fund at all",s:1}]},
+{q:"How do you handle credit card balances?",cat:"Debt Management",opts:[
+{t:"I pay in full every month",s:10},{t:"I pay more than the minimum",s:7},{t:"I pay only the minimum",s:3},{t:"I sometimes miss payments",s:1}]},
+{q:"What percentage of your income goes to housing?",cat:"Housing Costs",opts:[
+{t:"Under 25%",s:10},{t:"25-30%",s:8},{t:"31-40%",s:5},{t:"Over 40%",s:2}]},
+{q:"Do you have a monthly budget you follow?",cat:"Budgeting",opts:[
+{t:"Yes, I track every dollar",s:10},{t:"I have a rough budget",s:7},{t:"I try but don't stick to it",s:4},{t:"No budget at all",s:1}]},
+{q:"Are you saving for retirement?",cat:"Retirement",opts:[
+{t:"Yes, contributing regularly to 401(k)/IRA",s:10},{t:"Yes, but less than I should",s:6},{t:"I plan to start soon",s:3},{t:"Not saving for retirement yet",s:1}]},
+{q:"How would you rate your credit score knowledge?",cat:"Credit Score",opts:[
+{t:"I check regularly and it's 740+",s:10},{t:"I check sometimes, it's decent (670-739)",s:7},{t:"I'm not sure what my score is",s:3},{t:"My score needs work (below 670)",s:2}]},
+{q:"Do you have any non-mortgage debt?",cat:"Debt Level",opts:[
+{t:"No debt at all",s:10},{t:"Under $5,000",s:7},{t:"$5,000-$20,000",s:4},{t:"Over $20,000",s:1}]},
+{q:"How much of your income do you save each month?",cat:"Savings Rate",opts:[
+{t:"20% or more",s:10},{t:"10-19%",s:7},{t:"5-9%",s:4},{t:"Less than 5% or nothing",s:1}]},
+{q:"Do you have life or disability insurance?",cat:"Insurance",opts:[
+{t:"Yes, both adequately covered",s:10},{t:"Some coverage but probably not enough",s:6},{t:"Only employer-provided",s:4},{t:"No coverage at all",s:1}]},
+{q:"How do you handle unexpected expenses?",cat:"Financial Resilience",opts:[
+{t:"Pay from savings without stress",s:10},{t:"Can handle it but it's tight",s:7},{t:"Usually have to use a credit card",s:3},{t:"It causes a real financial crisis",s:1}]}
+];
+let fhsStep=0;const fhsAnswers=[];
+function initFHS(){fhsStep=0;fhsAnswers.length=0;renderFHSQ()}
+function renderFHSQ(){
+if(fhsStep>=fhsQuestions.length){showFHSResults();return}
+const q=fhsQuestions[fhsStep];
+const pct=Math.round(((fhsStep+1)/fhsQuestions.length)*100);
+document.getElementById('fhsStepLabel').textContent='Question '+(fhsStep+1)+' of 10';
+document.getElementById('fhsPctLabel').textContent=pct+'%';
+document.getElementById('fhsBar').style.width=pct+'%';
+document.getElementById('fhsQ').innerHTML=`
+<h3 style="margin-bottom:4px">${q.q}</h3>
+<p style="font-size:.82rem;color:var(--gray-300);margin-bottom:16px">Category: ${q.cat}</p>
+${q.opts.map((o,i)=>`<div class="fhs-opt" onclick="fhsAnswer(${i},this)">${o.t}</div>`).join('')}`;
+}
+function fhsAnswer(idx,el){
+document.querySelectorAll('#fhsQ .fhs-opt').forEach(o=>o.classList.remove('selected'));
+el.classList.add('selected');
+const q=fhsQuestions[fhsStep];
+fhsAnswers.push({cat:q.cat,score:q.opts[idx].s,max:10,chosen:q.opts[idx].t});
+setTimeout(()=>{fhsStep++;renderFHSQ()},350);
+}
+function showFHSResults(){
+document.getElementById('fhsQuiz').style.display='none';
+document.getElementById('fhsResults').style.display='block';
+const total=fhsAnswers.reduce((s,a)=>s+a.score,0);
+const maxTotal=fhsAnswers.length*10;
+const pct=Math.round((total/maxTotal)*100);
+// Animate score
+let current=0;
+const scoreEl=document.getElementById('fhsScoreNum');
+const ring=document.getElementById('fhsScoreRing');
+const interval=setInterval(()=>{
+current++;scoreEl.textContent=current;
+if(current>=pct)clearInterval(interval);
+},20);
+// Color the ring
+let ringColor,grade,gradeDesc;
+if(pct>=80){ringColor='var(--green)';grade='Excellent Financial Health';gradeDesc='You are in great shape. Keep up the strong habits and look for ways to optimize further.'}
+else if(pct>=60){ringColor='var(--purple)';grade='Good Financial Health';gradeDesc='You have solid foundations but there are clear areas where small changes can make a big difference.'}
+else if(pct>=40){ringColor='var(--gold)';grade='Fair Financial Health';gradeDesc='You are making progress but some areas need attention. The tips below can help you improve quickly.'}
+else{ringColor='var(--red)';grade='Needs Improvement';gradeDesc='Don\'t worry — everyone starts somewhere. Focus on the urgent tips below and take it one step at a time.'}
+ring.style.borderColor=ringColor;
+document.getElementById('fhsGrade').textContent=grade;
+document.getElementById('fhsGrade').style.color=ringColor;
+document.getElementById('fhsGradeDesc').textContent=gradeDesc;
+// Breakdown
+document.getElementById('fhsBreakdown').innerHTML='<h3 style="margin-bottom:14px">Score Breakdown by Category</h3>'+
+fhsAnswers.map(a=>{
+const p=a.score*10;
+const barColor=p>=70?'fill-green':p>=40?'fill-gold':'fill-purple';
+return`<div class="fhs-cat"><div class="fhs-cat-head"><h4>${a.cat}</h4><span class="fhs-cat-score" style="color:${p>=70?'var(--green)':p>=40?'var(--gold)':'var(--red)'}">${a.score}/10</span></div><div class="progress-bar" style="height:8px"><div class="${barColor}" style="width:${p}%"></div></div></div>`;
+}).join('');
+// Tips
+const tips=[];
+fhsAnswers.forEach(a=>{
+if(a.cat==='Emergency Fund'&&a.score<7)tips.push({level:a.score<=3?'urgent':'warn',icon:'🛡️',title:'Build Your Emergency Fund',text:'Start with a goal of $1,000, then work toward 3-6 months of expenses. Open a high-yield savings account earning 4%+ APY and set up automatic weekly transfers — even $25/week adds up to $1,300 in a year.',link:'tools',linkText:'Use Savings Calculator →'});
+if(a.cat==='Debt Management'&&a.score<7)tips.push({level:a.score<=3?'urgent':'warn',icon:'💳',title:'Get Credit Card Debt Under Control',text:'Paying only minimums costs thousands in interest. Try the debt avalanche method — pay minimums on everything, then throw extra at the highest-rate card. Consider a 0% balance transfer card to stop interest while you pay down.',link:'tools',linkText:'Use Debt Calculator →'});
+if(a.cat==='Budgeting'&&a.score<7)tips.push({level:a.score<=3?'urgent':'warn',icon:'📊',title:'Start Tracking Your Spending',text:'Americans who budget consistently spend 20-40% less than those who don\'t. Start with the 50/30/20 rule: 50% needs, 30% wants, 20% savings. Our Budget Planner makes it easy to see where every dollar goes.',link:'tools',linkText:'Use Budget Planner →'});
+if(a.cat==='Retirement'&&a.score<7)tips.push({level:a.score<=3?'urgent':'warn',icon:'🏦',title:'Start Saving for Retirement Now',text:'If your employer offers a 401(k) match, contribute at least enough to get the full match — it\'s free money. Even starting small matters: $200/month invested at 7% annual return grows to over $120,000 in 20 years thanks to compound interest.',link:'tools',linkText:'Use Savings Calculator →'});
+if(a.cat==='Credit Score'&&a.score<7)tips.push({level:a.score<=3?'urgent':'warn',icon:'📈',title:'Improve Your Credit Score',text:'Check your score for free through Credit Karma or your bank\'s app. Pay all bills on time, keep credit card utilization below 30%, and dispute any errors on your credit report. These steps alone can boost your score significantly within 90 days.',link:'cards',linkText:'Compare Credit Cards →'});
+if(a.cat==='Savings Rate'&&a.score<7)tips.push({level:a.score<=3?'urgent':'warn',icon:'💰',title:'Increase Your Savings Rate',text:'Aim to save at least 20% of your income. Start by automating transfers to savings on payday — you won\'t miss money you never see in checking. Cut subscriptions you don\'t use and redirect that money to savings.',link:'tools',linkText:'Use Budget Planner →'});
+if(a.cat==='Debt Level'&&a.score<7)tips.push({level:a.score<=3?'urgent':'warn',icon:'🎯',title:'Create a Debt Payoff Plan',text:'List all debts with balances and interest rates. Choose snowball (smallest first) or avalanche (highest rate first) and commit to a monthly payment amount. Our calculator shows exactly when you\'ll be debt-free.',link:'tools',linkText:'Use Debt Calculator →'});
+if(a.cat==='Housing Costs'&&a.score<5)tips.push({level:'warn',icon:'🏠',title:'Review Your Housing Costs',text:'Financial experts recommend keeping housing under 30% of gross income. If you\'re over that, consider negotiating rent, getting a roommate, refinancing if you own, or planning a move to a more affordable area.'});
+if(a.cat==='Insurance'&&a.score<7)tips.push({level:'warn',icon:'🛡️',title:'Review Your Insurance Coverage',text:'Life and disability insurance protect your family if something happens to you. Term life insurance is affordable — a healthy 30-year-old can get $500K coverage for under $25/month. Check if your employer offers group plans.'});
+if(a.cat==='Financial Resilience'&&a.score<7)tips.push({level:a.score<=3?'urgent':'warn',icon:'💪',title:'Build Financial Resilience',text:'Start by building a $1,000 starter emergency fund. Then work on reducing high-interest debt. Having even a small cash buffer transforms how you handle surprises — you go from crisis mode to simply adjusting your budget.'});
+});
+// Add good tips for high scorers
+if(pct>=70){tips.unshift({level:'good',icon:'⭐',title:'You\'re Doing Great — Keep It Up',text:'Your financial habits are strong. Look for ways to optimize: maximize retirement contributions, explore tax-advantaged accounts like HSAs, and consider diversifying investments. Small improvements at your level have a big long-term impact.'})}
+document.getElementById('fhsTips').innerHTML=tips.map(t=>`
+<div class="fhs-tip ${t.level}">
+<span style="font-size:1.3rem;flex-shrink:0">${t.icon}</span>
+<div>
+<strong style="display:block;margin-bottom:4px;color:var(--navy)">${t.title}</strong>
+<p style="font-size:.88rem;color:var(--gray-500);margin:0">${t.text}</p>
+${t.link?`<a href="#${t.link}" onclick="showPage('${t.link}')" style="color:var(--purple);font-weight:600;font-size:.86rem;display:inline-block;margin-top:8px">${t.linkText}</a>`:''}
+</div>
+</div>`).join('');
+}
+function resetFHS(){
+fhsStep=0;fhsAnswers.length=0;
+document.getElementById('fhsQuiz').style.display='block';
+document.getElementById('fhsResults').style.display='none';
+renderFHSQ();
+}
+
+// ===== CREDIT CARD QUIZ =====
+const quizAnswers={};
+function quizSelect(step,val,el){
+  quizAnswers['q'+step]=val;
+  document.querySelectorAll('#q'+step+'opts .quiz-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  setTimeout(()=>{
+    if(step<4){
+      document.getElementById('quizStep'+step).style.display='none';
+      document.getElementById('quizStep'+(step+1)).style.display='block';
+      const pct=(step+1)*25;
+      document.getElementById('quizBar').style.width=pct+'%';
+      document.getElementById('quizStepLabel').textContent='Step '+(step+1)+' of 4';
+      document.getElementById('quizPctLabel').textContent=pct+'%';
+    }else{
+      document.getElementById('quizStep4').style.display='none';
+      document.getElementById('quizProgress').style.display='none';
+      showQuizResults();
+    }
+  },400);
+}
+function showQuizResults(){
+  const a=quizAnswers;
+  const allCards=[
+    {name:"Chase Sapphire Preferred",bank:"Chase",apr:"21.49%-28.49%",fee:"$95",why:"Top travel rewards with 5X on travel via Chase and 3X on dining",tags:['travel','dining','excellent','good','yes'],link:"#"},
+    {name:"Citi Double Cash",bank:"Citi",apr:"18.49%-28.49%",fee:"$0",why:"Simple 2% cash back on everything — no categories to track",tags:['cashback','nofee','everything','excellent','good','no'],link:"#"},
+    {name:"Capital One Venture X",bank:"Capital One",apr:"19.99%-29.99%",fee:"$395",why:"Premium travel card with lounge access and 2X miles on everything",tags:['travel','excellent','yes'],link:"#"},
+    {name:"Discover it Cash Back",bank:"Discover",apr:"16.49%-27.49%",fee:"$0",why:"Great first card with 5% rotating categories and first-year cashback match",tags:['build','nofee','beginner','none','fair','no','groceries'],link:"#"},
+    {name:"Amex Blue Cash Preferred",bank:"Amex",apr:"19.49%-29.99%",fee:"$95",why:"6% back at US supermarkets and 6% on streaming services",tags:['cashback','groceries','excellent','good','yes'],link:"#"},
+    {name:"Wells Fargo Active Cash",bank:"Wells Fargo",apr:"20.49%-29.49%",fee:"$0",why:"Flat 2% cash rewards plus $200 bonus and 0% intro APR",tags:['cashback','nofee','everything','good','fair','no'],link:"#"},
+    {name:"Chase Freedom Unlimited",bank:"Chase",apr:"20.49%-29.24%",fee:"$0",why:"5% on travel via Chase, 3% dining, 1.5% everything else — no fee",tags:['nofee','cashback','dining','good','fair','no','build'],link:"#"},
+    {name:"Bank of America Customized Cash",bank:"Bank of America",apr:"19.49%-29.49%",fee:"$0",why:"Pick your own 3% category — gas, groceries, dining, or more",tags:['cashback','nofee','groceries','good','fair','no'],link:"#"}
+  ];
+  // Score each card
+  const scored=allCards.map(card=>{
+    let score=0;
+    if(card.tags.includes(a.q1))score+=3;
+    if(card.tags.includes(a.q2))score+=2;
+    if(card.tags.includes(a.q3))score+=2;
+    if(a.q4==='no'&&card.fee==='$0')score+=2;
+    if(a.q4==='yes'&&card.fee!=='$0')score+=1;
+    if(a.q2==='none'||a.q2==='fair'){if(card.tags.includes('build')||card.tags.includes('beginner'))score+=2}
+    return{...card,score};
+  });
+  scored.sort((a,b)=>b.score-a.score);
+  const top3=scored.slice(0,3);
+  const badges=['best','great','great'];
+  const badgeText=['Best Match','Great Option','Also Consider'];
+  document.getElementById('quizMatches').innerHTML=top3.map((c,i)=>`
+    <div class="quiz-match-card">
+      <div class="match-info">
+        <span class="match-badge ${badges[i]}">${badgeText[i]}</span>
+        <h3>${c.name}</h3>
+        <span style="font-size:.84rem;color:var(--gray-400)">${c.bank}</span>
+        <div class="match-details">${c.why}</div>
+        <div style="margin-top:8px;font-size:.84rem"><span style="color:var(--gray-400)">APR: ${c.apr}</span> · <span style="${c.fee==='$0'?'color:var(--green);font-weight:600':'color:var(--gray-400)'}">Fee: ${c.fee}</span></div>
+      </div>
+      <a href="${c.link}" class="apply-btn" style="min-width:140px;flex-shrink:0" onclick="trackClick(event)">Apply Now →</a>
+    </div>
+  `).join('');
+  document.getElementById('quizResults').style.display='block';
+}
+function resetQuiz(){
+  Object.keys(quizAnswers).forEach(k=>delete quizAnswers[k]);
+  document.querySelectorAll('.quiz-opt').forEach(o=>o.classList.remove('selected'));
+  ['quizStep2','quizStep3','quizStep4'].forEach(id=>document.getElementById(id).style.display='none');
+  document.getElementById('quizStep1').style.display='block';
+  document.getElementById('quizResults').style.display='none';
+  document.getElementById('quizProgress').style.display='block';
+  document.getElementById('quizBar').style.width='25%';
+  document.getElementById('quizStepLabel').textContent='Step 1 of 4';
+  document.getElementById('quizPctLabel').textContent='25%';
+}
+
 function trackClick(e){let c=+(localStorage.getItem('sc_clicks2')||'0');localStorage.setItem('sc_clicks2',String(c+1))}
 
 // ===== ADMIN =====
@@ -1198,6 +1428,7 @@ document.addEventListener('DOMContentLoaded',function(){
   calcSav();
   calcBud();
   calcDebt();
+  initFHS();
 });
 </script>
 </body>
