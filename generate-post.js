@@ -1,22 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 
-// ============================================
-// SavingsClub Automated Blog Post Generator
-// Runs weekly via GitHub Actions
-// ============================================
-
-const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
+const API_URL = 'https://api.anthropic.com/v1/messages';
 const API_KEY = process.env.ANTHROPIC_API_KEY;
 
 if (!API_KEY) {
-  console.error('ERROR: ANTHROPIC_API_KEY environment variable is not set.');
+  console.error('ERROR: ANTHROPIC_API_KEY not set.');
   process.exit(1);
 }
 
-// --- Topic rotation ---
-// The script picks a topic based on the current week number so it cycles
-// through different finance subjects automatically.
 const TOPICS = [
   "Best High-Yield Savings Accounts for Americans",
   "How to Build an Emergency Fund on Any Income",
@@ -35,7 +27,7 @@ const TOPICS = [
   "How to Create a Budget That Actually Sticks",
   "Best Cash Back Credit Cards for Everyday Spending",
   "How to Avoid Common Money Mistakes in Your 30s",
-  "Emergency Fund vs Paying Off Debt — Which Comes First",
+  "Emergency Fund vs Paying Off Debt Which Comes First",
   "How to Read and Understand Your Credit Report",
   "Best Financial Apps for Managing Money",
   "How to Save Money on Groceries Without Coupons",
@@ -55,9 +47,9 @@ const TOPICS = [
   "How to Teach Your Kids About Money",
   "Best Checking Accounts with No Monthly Fees",
   "How to Plan for Large Purchases Without Going Into Debt",
-  "Credit Card Sign-Up Bonuses Worth Considering",
+  "Credit Card Sign Up Bonuses Worth Considering",
   "How to Lower Your Insurance Costs",
-  "Best Money Habits for Building Long-Term Wealth",
+  "Best Money Habits for Building Long Term Wealth",
   "How to Handle Financial Stress and Anxiety",
   "Understanding Different Types of Savings Accounts",
   "How to Save Money on Utilities and Energy Bills",
@@ -69,80 +61,52 @@ const TOPICS = [
   "How to Financially Prepare for a Baby",
   "Understanding Personal Loans and When They Make Sense",
   "How to Avoid Lifestyle Creep as Your Income Grows",
-  "Best Ways to Send Money to Family Abroad"
+  "Best Ways to Send Money to Family Abroad",
+  "How to Choose the Right Credit Card for Your Lifestyle",
+  "Best Money Saving Challenges to Try This Month",
+  "How to Build Wealth on a Middle Class Income",
+  "Understanding Your Employee Benefits Package",
+  "Best High Yield CDs Available Right Now",
+  "How to Create a Financial Plan for Your Family",
+  "Understanding Mortgage Options for First Time Buyers",
+  "How to Maximize Credit Card Rewards Without Overspending"
 ];
 
-const STATES = [
-  'California', 'Texas', 'Florida', 'New York', 'Illinois',
-  'Georgia', 'Pennsylvania', 'Ohio', 'North Carolina', 'Michigan'
-];
+const SYSTEM_PROMPT = `You are an expert US personal finance writer for SavingsClub.com in 2026.
 
-const CATEGORIES = [
-  'Savings', 'Budgeting', 'Credit Cards', 'Debt',
-  'Credit', 'Banking', 'Investing', 'Tips'
-];
-
-function getWeekNumber() {
-  const now = new Date();
-  const start = new Date(now.getFullYear(), 0, 1);
-  const diff = now - start;
-  return Math.floor(diff / (7 * 24 * 60 * 60 * 1000));
-}
+RULES:
+- Write exactly 1000-1200 words
+- Return ONLY clean HTML - no markdown, no backticks, no preamble text
+- Start with: <p style="font-size:.82rem;color:#888;margin-bottom:16px">⚠️ Rates, offers, and financial information in this article reflect conditions as of early 2026. Always verify current information with providers before making financial decisions.</p>
+- Then an H1 title
+- Use 3-4 H2 subheadings
+- Friendly expert tone
+- Reference US states naturally: California, Texas, Florida, New York, Illinois, Georgia, Pennsylvania, Ohio, North Carolina, Michigan
+- Do NOT fabricate statistics or credentials
+- End with: <div class="cta-box"><h3>CTA Title</h3><p>Description</p><a href="#tools" class="btn btn-gold" onclick="showPage('tools')" style="margin-top:10px">Tool Name →</a></div>
+- Link to: Savings Calculator, Budget Planner, Debt Payoff Calculator, or Credit Card Comparison`;
 
 function pickTopic() {
-  const week = getWeekNumber();
-  return TOPICS[week % TOPICS.length];
+  const now = new Date();
+  const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+  return TOPICS[dayOfYear % TOPICS.length];
 }
 
 function pickCategory(topic) {
-  const lower = topic.toLowerCase();
-  if (lower.includes('savings') || lower.includes('save') || lower.includes('emergency fund')) return 'Savings';
-  if (lower.includes('budget') || lower.includes('spending')) return 'Budgeting';
-  if (lower.includes('credit card') || lower.includes('rewards') || lower.includes('cash back')) return 'Credit Cards';
-  if (lower.includes('debt') || lower.includes('pay off') || lower.includes('loan')) return 'Debt';
-  if (lower.includes('credit score') || lower.includes('credit report') || lower.includes('build credit')) return 'Credit';
-  if (lower.includes('bank') || lower.includes('checking') || lower.includes('account')) return 'Banking';
-  if (lower.includes('invest') || lower.includes('retirement')) return 'Investing';
+  const t = topic.toLowerCase();
+  if (t.includes('savings') || t.includes('save') || t.includes('emergency fund') || t.includes('cd')) return 'Savings';
+  if (t.includes('budget') || t.includes('spending')) return 'Budgeting';
+  if (t.includes('credit card') || t.includes('rewards') || t.includes('cash back') || t.includes('sign up bonus')) return 'Credit Cards';
+  if (t.includes('debt') || t.includes('pay off') || t.includes('loan') || t.includes('balance transfer')) return 'Debt';
+  if (t.includes('credit score') || t.includes('credit report') || t.includes('build credit') || t.includes('fico')) return 'Credit';
+  if (t.includes('bank') || t.includes('checking') || t.includes('account') || t.includes('mortgage')) return 'Banking';
+  if (t.includes('invest') || t.includes('retirement') || t.includes('wealth')) return 'Investing';
   return 'Tips';
 }
 
-function formatDate() {
-  return new Date().toLocaleDateString('en-US', {
-    month: 'long', day: 'numeric', year: 'numeric'
-  });
-}
-
-const SYSTEM_PROMPT = `You are an expert US personal finance writer for SavingsClub.com in 2026. You write clear, actionable, trustworthy content for working Americans aged 25-55.
-
-WRITING RULES:
-- Write exactly 1,000-1,200 words
-- Return ONLY clean HTML (no markdown, no backticks, no preamble)
-- Start with an H1 title tag
-- Use 3-4 H2 subheadings to structure the article
-- Use H3 subheadings within sections where appropriate
-- Write in a friendly, knowledgeable tone — like a smart friend explaining finance
-- Naturally reference these US states where relevant: California, Texas, Florida, New York, Illinois, Georgia, Pennsylvania, Ohio, North Carolina, Michigan
-- Use phrases like "across the US", "no matter what state you live in", "whether you're in California or Florida"
-- Include specific dollar amounts, percentages, and actionable steps
-- Do NOT fabricate statistics — use general knowledge and say "studies suggest" or "financial experts recommend" rather than citing specific fake numbers
-- Do NOT invent company credentials, endorsements, or fake testimonials
-- End with a call-to-action div linking to a SavingsClub tool, formatted as:
-  <div class="cta-box"><h3>CTA Heading</h3><p>CTA description</p><a href="#tools" class="btn btn-gold" onclick="showPage('tools')" style="margin-top:10px">Tool Name →</a></div>
-- Link to relevant tools: Savings Calculator, Budget Planner, Debt Payoff Calculator, or Credit Card Comparison
-- Add this disclaimer as the VERY FIRST element before the H1:
-  <p style="font-size:.82rem;color:#888;margin-bottom:16px">⚠️ Rates, offers, and financial information in this article reflect conditions as of early 2026. Always verify current information with providers before making financial decisions.</p>
-
-SEO RULES:
-- Use the primary keyword in the H1, first paragraph, at least one H2, and naturally throughout
-- Keep paragraphs short (2-4 sentences) for readability
-- Use bold for key terms and important numbers
-- Internal link to SavingsClub.com tools naturally within the content
-- Write for humans first, search engines second`;
-
 async function generatePost(topic) {
-  console.log(`Generating post about: "${topic}"...`);
-
-  const response = await fetch(ANTHROPIC_API_URL, {
+  console.log('Calling Claude API...');
+  const res = await fetch(API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -153,26 +117,20 @@ async function generatePost(topic) {
       model: 'claude-sonnet-4-20250514',
       max_tokens: 4000,
       system: SYSTEM_PROMPT,
-      messages: [{
-        role: 'user',
-        content: `Write a comprehensive, SEO-optimized blog post about: ${topic}\n\nTarget audience: Working Americans aged 25-55 across all 50 states.\nYear: 2026\nTone: Friendly expert — knowledgeable but approachable.\nLength: 1,000-1,200 words.\nReturn clean HTML only.`
-      }]
+      messages: [{ role: 'user', content: `Write a blog post about: ${topic}` }]
     })
   });
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`API request failed (${response.status}): ${errorText}`);
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`API error (${res.status}): ${err}`);
   }
 
-  const data = await response.json();
-  const content = data.content
-    .filter(block => block.type === 'text')
-    .map(block => block.text)
-    .join('');
-
-  // Clean up any markdown artifacts
-  return content
+  const data = await res.json();
+  return data.content
+    .filter(b => b.type === 'text')
+    .map(b => b.text)
+    .join('')
     .replace(/```html/g, '')
     .replace(/```/g, '')
     .trim();
@@ -181,91 +139,58 @@ async function generatePost(topic) {
 async function main() {
   const topic = pickTopic();
   const category = pickCategory(topic);
-  const date = formatDate();
+  const date = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  const id = Date.now();
 
-  console.log(`\n📝 SavingsClub Auto Blog Generator`);
+  console.log(`\n📝 SavingsClub Blog Generator`);
   console.log(`   Topic: ${topic}`);
   console.log(`   Category: ${category}`);
   console.log(`   Date: ${date}\n`);
 
-  // Generate the article
   const content = await generatePost(topic);
 
-  // Extract title from H1 tag
   const titleMatch = content.match(/<h1[^>]*>(.*?)<\/h1>/i);
   const title = titleMatch ? titleMatch[1] : topic;
 
-  // Create the post object
-  const post = {
-    id: Date.now(),
-    title: title,
-    cat: category,
-    date: date,
-    preview: `Expert guide on ${topic.toLowerCase()} for Americans in 2026.`,
-    content: content
-  };
+  const post = { id, title, cat: category, date, preview: `Expert guide: ${topic.toLowerCase()}.`, content };
 
-  // Read existing generated posts
+  // Save to generated-posts.json
   const postsFile = path.join(__dirname, 'generated-posts.json');
   let posts = [];
-  if (fs.existsSync(postsFile)) {
-    posts = JSON.parse(fs.readFileSync(postsFile, 'utf8'));
-  }
-
-  // Add new post
+  try { posts = JSON.parse(fs.readFileSync(postsFile, 'utf8')); } catch(e) { posts = []; }
   posts.push(post);
-
-  // Save updated posts
   fs.writeFileSync(postsFile, JSON.stringify(posts, null, 2));
 
-  console.log(`✅ Post generated: "${title}"`);
-  console.log(`   Category: ${category}`);
-  console.log(`   Saved to: generated-posts.json`);
-  console.log(`   Total generated posts: ${posts.length}\n`);
-
-  // Now update the HTML file to include the new post
-  updateHTML(posts);
-}
-
-function updateHTML(generatedPosts) {
+  // Update index.html
   const htmlFile = path.join(__dirname, 'index.html');
+  let html = fs.readFileSync(htmlFile, 'utf8');
 
-  if (!fs.existsSync(htmlFile)) {
-    console.error('ERROR: index.html not found.');
+  // Build JS array of all generated posts
+  const jsArray = posts.map(p => {
+    const safe = p.content.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$\{/g, '\\${');
+    return `{id:${p.id},title:${JSON.stringify(p.title)},cat:${JSON.stringify(p.cat)},date:${JSON.stringify(p.date)},preview:${JSON.stringify(p.preview)},content:\`${safe}\`}`;
+  }).join(',\n');
+
+  const newLine = `const generatedPosts=[${jsArray}]; // __GENERATED_POSTS__`;
+
+  if (html.includes('const generatedPosts=[')) {
+    // Replace existing generated posts line
+    html = html.replace(/const generatedPosts=\[[\s\S]*?\]; \/\/ __GENERATED_POSTS__/, newLine);
+  } else if (html.includes('// __GENERATED_POSTS__')) {
+    // First time - replace marker
+    html = html.replace('// __GENERATED_POSTS__', newLine);
+  } else {
+    console.error('ERROR: Could not find __GENERATED_POSTS__ marker in index.html');
+    console.log('Posts saved to generated-posts.json but index.html was not updated.');
+    console.log('You may need to re-upload the latest index.html from Claude.');
     process.exit(1);
   }
 
-  let html = fs.readFileSync(htmlFile, 'utf8');
-
-  // Build the generated posts JavaScript array
-  const postsJS = generatedPosts.map(p => {
-    // Escape backticks and backslashes in content for template literals
-    const safeContent = p.content
-      .replace(/\\/g, '\\\\')
-      .replace(/`/g, '\\`')
-      .replace(/\$\{/g, '\\${');
-
-    return `{id:${p.id},title:${JSON.stringify(p.title)},cat:${JSON.stringify(p.cat)},date:${JSON.stringify(p.date)},preview:${JSON.stringify(p.preview)},content:\`${safeContent}\`}`;
-  }).join(',\n');
-
-  // Replace the GENERATED_POSTS placeholder
-  const marker = '// __GENERATED_POSTS__';
-  if (html.includes(marker)) {
-    html = html.replace(
-      marker,
-      `const generatedPosts=[${postsJS}]; // __GENERATED_POSTS__`
-    );
-    // On subsequent runs, replace the whole line
-  } else if (html.includes('const generatedPosts=[')) {
-    // Replace existing generated posts array
-    html = html.replace(
-      /const generatedPosts=\[[\s\S]*?\]; \/\/ __GENERATED_POSTS__/,
-      `const generatedPosts=[${postsJS}]; // __GENERATED_POSTS__`
-    );
-  }
-
   fs.writeFileSync(htmlFile, html);
-  console.log('✅ index.html updated with new post.');
+
+  console.log(`✅ Published: "${title}"`);
+  console.log(`   Total generated posts: ${posts.length}`);
+  console.log(`   index.html updated\n`);
 }
 
 main().catch(err => {
