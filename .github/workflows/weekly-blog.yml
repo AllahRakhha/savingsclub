@@ -15,26 +15,24 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Pull latest changes
-        run: git pull origin main
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
+      - name: Pull latest
+        run: git pull origin main
+
       - name: Generate blog post
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node generate-post.js
 
-      - name: Commit and push new post
+      - name: Commit and push
         run: |
           git config user.name "SavingsClub Bot"
           git config user.email "bot@savingsclub.com"
           git add -A
           git commit -m "📝 New blog post - $(date +'%B %d, %Y')" || echo "No changes"
-          git push origin main --force
+          git push
