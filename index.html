@@ -13,34 +13,39 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SavingsClub">
 <meta name="twitter:card" content="summary_large_image">
-<meta name='impact-site-verification' value='82b61d6a-2117-44a5-8b44-b9c7cb057d35'>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SavingsClub","url":"https://savingsclub.com","description":"Free money tools and smart financial advice for all Americans.","potentialAction":{"@type":"SearchAction","target":"https://savingsclub.com/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FinancialProduct","name":"SavingsClub Financial Tools","description":"Free savings calculator, budget planner, debt payoff calculator, and credit card comparison tool.","provider":{"@type":"Organization","name":"SavingsClub","url":"https://savingsclub.com"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- ADSENSE SLOT — HEADER -->
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
---purple:#6B35C8;--purple-dark:#5229A3;--purple-light:#8B5CF6;--purple-bg:rgba(107,53,200,0.06);
---navy:#1B2B5E;--navy-dark:#111D40;--navy-light:#263A7A;
---gold:#F5A623;--gold-dark:#D4900F;--gold-light:#FBBF24;
---white:#FFFFFF;--bg:#F8F9FA;--gray-50:#F1F3F5;--gray-100:#E2E6EC;
---gray-200:#C9D1E0;--gray-300:#A0AABF;--gray-400:#6B7A99;--gray-500:#4A5568;--gray-600:#2D3748;
---green:#10B981;--green-bg:rgba(16,185,129,0.08);--red:#EF4444;--red-bg:rgba(239,68,68,0.08);
+--purple:#0EA5E9;--purple-dark:#0284C7;--purple-light:#38BDF8;--purple-bg:rgba(14,165,233,0.08);
+--navy:#0B1442;--navy-dark:#060B26;--navy-light:#1A2558;
+--gold:#00E0FF;--gold-dark:#00B8D4;--gold-light:#67E8F9;
+--white:#FFFFFF;--bg:#F5F7FB;--gray-50:#F8FAFC;--gray-100:#E2E8F0;
+--gray-200:#CBD5E1;--gray-300:#94A3B8;--gray-400:#64748B;--gray-500:#475569;--gray-600:#334155;
+--green:#10B981;--green-bg:rgba(16,185,129,0.12);--red:#EF4444;--red-bg:rgba(239,68,68,0.12);
 --amber:#F59E0B;--amber-bg:#FFFBEB;
---shadow-sm:0 1px 3px rgba(27,43,94,0.06);--shadow-md:0 4px 16px rgba(27,43,94,0.08);
---shadow-lg:0 8px 32px rgba(27,43,94,0.1);--shadow-xl:0 16px 48px rgba(107,53,200,0.12);
---radius:14px;--radius-sm:10px;--radius-lg:20px;--radius-xl:28px;
+--blue-electric:#00E0FF;--blue-glow:rgba(0,224,255,0.35);
+--glass:rgba(255,255,255,0.1);--glass-border:rgba(255,255,255,0.18);
+--gradient-hero:linear-gradient(135deg,#0B1442 0%,#1A2558 50%,#0EA5E9 150%);
+--gradient-btn:linear-gradient(135deg,#0EA5E9 0%,#00E0FF 100%);
+--gradient-card:linear-gradient(135deg,rgba(255,255,255,0.08) 0%,rgba(255,255,255,0.04) 100%);
+--shadow-sm:0 2px 8px rgba(11,20,66,0.08);--shadow-md:0 8px 24px rgba(11,20,66,0.12);
+--shadow-lg:0 16px 48px rgba(11,20,66,0.18);--shadow-xl:0 20px 60px rgba(0,224,255,0.2);
+--shadow-glow:0 0 40px rgba(0,224,255,0.3);
+--radius:16px;--radius-sm:10px;--radius-lg:22px;--radius-xl:30px;
 --transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--gray-600);background:var(--white);line-height:1.7;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;color:var(--gray-600);background:var(--white);line-height:1.7;overflow-x:hidden}
 a{text-decoration:none;color:inherit;transition:var(--transition)}
 button{font-family:inherit;cursor:pointer;border:none;outline:none}
 input,select,textarea{font-family:inherit;outline:none}
-h1,h2,h3,h4,h5,h6{color:var(--navy);line-height:1.25;font-weight:800}
+h1,h2,h3,h4,h5,h6{font-family:'Space Grotesk',sans-serif;color:var(--navy);line-height:1.22;font-weight:700;letter-spacing:-0.01em}
 h1{font-size:clamp(2.2rem,5vw,3.5rem)}
 h2{font-size:clamp(1.7rem,3.5vw,2.5rem)}
 h3{font-size:clamp(1.15rem,2.2vw,1.5rem)}
@@ -341,8 +346,86 @@ h3{font-size:clamp(1.15rem,2.2vw,1.5rem)}
 .trust-row{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:20px}
 .trust-badge{display:flex;align-items:center;gap:6px;font-size:.84rem;font-weight:600;color:var(--gray-400)}
 
+
+/* Reading Progress Bar */
+.reading-progress{position:fixed;top:68px;left:0;height:3px;background:var(--gradient-btn);z-index:9001;width:0%;transition:width 0.1s;box-shadow:0 0 10px var(--blue-glow)}
+
+/* Back to Top */
+.back-to-top{position:fixed;bottom:80px;right:20px;width:46px;height:46px;border-radius:50%;background:var(--gradient-btn);color:var(--navy);display:none;align-items:center;justify-content:center;font-size:1.3rem;font-weight:700;box-shadow:var(--shadow-md);z-index:100;cursor:pointer;border:none}
+.back-to-top.show{display:flex}
+.back-to-top:hover{transform:translateY(-2px);box-shadow:var(--shadow-xl)}
+
+/* Mobile Bottom Nav */
+.bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(11,20,66,0.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:8998;border-top:1px solid rgba(255,255,255,0.1);padding:6px 0 calc(6px + env(safe-area-inset-bottom))}
+.bottom-nav-inner{display:grid;grid-template-columns:repeat(5,1fr);max-width:500px;margin:0 auto}
+.bn-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px;color:rgba(255,255,255,0.65);font-size:.68rem;font-weight:600;transition:var(--transition);cursor:pointer}
+.bn-item.active{color:var(--blue-electric)}
+.bn-icon{font-size:1.25rem}
+
+/* Newsletter Popup */
+.newsletter-overlay{position:fixed;inset:0;background:rgba(11,20,66,0.8);backdrop-filter:blur(6px);z-index:10001;display:none;align-items:center;justify-content:center;padding:20px;animation:fadeIn .3s ease}
+.newsletter-overlay.show{display:flex}
+.newsletter-popup{background:var(--white);border-radius:var(--radius-lg);padding:32px;max-width:440px;width:100%;position:relative;box-shadow:var(--shadow-lg);animation:popIn .4s ease}
+.popup-close{position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:50%;background:var(--gray-100);color:var(--navy);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-weight:700}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes popIn{from{opacity:0;transform:scale(.9) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+
+/* Math CAPTCHA */
+.captcha-box{background:var(--gray-50);padding:12px 14px;border-radius:var(--radius-sm);margin-bottom:14px;font-size:.88rem;display:flex;align-items:center;gap:12px;border:1px solid var(--gray-100)}
+.captcha-box label{font-weight:600;color:var(--navy);white-space:nowrap;margin:0}
+.captcha-box input{width:70px;padding:6px 10px;border:2px solid var(--gray-100);border-radius:6px;font-size:.9rem}
+
+/* Quiz */
+.quiz-card-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:var(--white);border-radius:var(--radius-lg);padding:36px 28px;text-align:center;position:relative;overflow:hidden;box-shadow:var(--shadow-md)}
+.quiz-card-hero::before{content:'';position:absolute;top:-30%;right:-20%;width:60%;height:150%;background:radial-gradient(circle,rgba(0,224,255,0.25) 0%,transparent 60%);pointer-events:none}
+.quiz-card-hero h3{color:var(--white);font-size:1.4rem;margin-bottom:10px;position:relative;z-index:1}
+.quiz-card-hero p{color:rgba(255,255,255,0.85);margin-bottom:18px;position:relative;z-index:1;line-height:1.6}
+.quiz-card-hero .btn{position:relative;z-index:1}
+.quiz-modal{position:fixed;inset:0;background:rgba(11,20,66,0.9);backdrop-filter:blur(8px);z-index:10002;display:none;align-items:center;justify-content:center;padding:20px}
+.quiz-modal.show{display:flex}
+.quiz-inner{background:var(--white);border-radius:var(--radius-lg);padding:28px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:var(--shadow-lg)}
+.quiz-question{font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:16px;font-family:'Space Grotesk',sans-serif}
+.quiz-options{display:flex;flex-direction:column;gap:10px}
+.quiz-option{padding:14px 18px;border:2px solid var(--gray-100);border-radius:var(--radius-sm);background:var(--white);cursor:pointer;font-size:.95rem;text-align:left;transition:var(--transition);color:var(--gray-600);font-family:'Inter',sans-serif}
+.quiz-option:hover{border-color:var(--purple);background:var(--purple-bg)}
+.quiz-progress{height:6px;background:var(--gray-100);border-radius:6px;margin-bottom:20px;overflow:hidden}
+.quiz-progress-bar{height:100%;background:var(--gradient-btn);transition:width 0.3s;width:0%}
+.quiz-close{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:var(--gray-100);color:var(--navy);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-weight:700;z-index:2}
+.quiz-result{text-align:center;padding:10px 0}
+.quiz-result h3{font-size:1.5rem;color:var(--navy);margin-bottom:14px;font-family:'Space Grotesk',sans-serif}
+.quiz-result p{color:var(--gray-500);margin-bottom:18px;line-height:1.7}
+
+/* Search results */
+.search-results{display:none;background:var(--white);border:1px solid var(--gray-100);border-radius:var(--radius);box-shadow:var(--shadow-lg);max-height:400px;overflow-y:auto;margin-top:8px}
+.search-results.show{display:block}
+.search-item{padding:12px 14px;border-bottom:1px solid var(--gray-50);cursor:pointer;transition:var(--transition)}
+.search-item:hover{background:var(--gray-50)}
+.search-item:last-child{border-bottom:none}
+.search-item strong{color:var(--navy);display:block;font-size:.88rem}
+.search-item span{color:var(--gray-400);font-size:.78rem}
+.search-empty{padding:16px;text-align:center;color:var(--gray-400);font-size:.85rem}
+
+/* Share buttons */
+.share-row{display:flex;gap:10px;margin-top:20px;padding-top:18px;border-top:1px solid var(--gray-100);flex-wrap:wrap;align-items:center}
+.share-row span{font-size:.82rem;color:var(--gray-400);font-weight:600}
+.share-btn{width:36px;height:36px;border-radius:50%;background:var(--gray-100);color:var(--navy);display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;transition:var(--transition);cursor:pointer;border:none}
+.share-btn:hover{background:var(--gradient-btn);color:var(--navy);transform:translateY(-2px)}
+
+/* Related Articles */
+.related-articles{margin-top:24px;padding-top:20px;border-top:2px solid var(--gray-100)}
+.related-articles h3{margin-bottom:14px;font-size:1.1rem;color:var(--navy)}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.related-card{padding:12px;border:1px solid var(--gray-100);border-radius:var(--radius-sm);cursor:pointer;transition:var(--transition)}
+.related-card:hover{border-color:var(--purple);transform:translateY(-2px)}
+.related-card .tag{display:inline-block;background:var(--purple-bg);color:var(--purple);padding:2px 8px;border-radius:12px;font-size:.65rem;font-weight:600;margin-bottom:6px}
+.related-card h4{font-size:.85rem;color:var(--navy);line-height:1.35;font-family:'Inter',sans-serif;font-weight:600}
+
+/* Article meta */
+.article-meta-bar{display:flex;gap:14px;margin-bottom:16px;padding:10px 0;border-bottom:1px solid var(--gray-100);flex-wrap:wrap;font-size:.8rem;color:var(--gray-400)}
+.article-meta-bar span strong{color:var(--navy)}
+
 @media(max-width:1024px){.grid-4{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.grid-2,.grid-3,.steps{grid-template-columns:1fr}.hero-btns{flex-direction:column;align-items:flex-start}.counter-bar{grid-template-columns:repeat(2,1fr)}.newsletter-form{flex-direction:column}.blog-grid{grid-template-columns:1fr}.grid-4{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.blog-article{padding:22px}.admin-tabs{flex-direction:column}.bar-chart{height:120px}}
+@media(max-width:768px){body{padding-bottom:72px}.nav-links{display:none}.hamburger{display:flex}.bottom-nav{display:block}.back-to-top{bottom:88px}.grid-2,.grid-3,.steps{grid-template-columns:1fr}.hero-btns{flex-direction:column;align-items:flex-start}.counter-bar{grid-template-columns:repeat(2,1fr)}.newsletter-form{flex-direction:column}.blog-grid{grid-template-columns:1fr}.grid-4{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.blog-article{padding:22px}.admin-tabs{flex-direction:column}.bar-chart{height:120px}}
 @media(max-width:480px){.container{padding:0 16px}.section{padding:60px 0}.tool-card{padding:22px}.counter-bar{grid-template-columns:1fr}}
 </style>
 </head>
@@ -355,6 +438,37 @@ h3{font-size:clamp(1.15rem,2.2vw,1.5rem)}
 <div class="cookie-btns"><button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept</button><button class="cookie-btn cookie-manage" onclick="showPage('privacy');acceptCookies()">Manage Preferences</button></div>
 </div></div>
 
+<!-- Reading Progress -->
+<div class="reading-progress" id="readingProgress"></div>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Newsletter Popup -->
+<div class="newsletter-overlay" id="nlOverlay">
+<div class="newsletter-popup">
+<button class="popup-close" onclick="closeNLPopup()">✕</button>
+<h3 style="text-align:center;font-size:1.35rem;margin-bottom:8px;color:var(--navy)">💰 Get Smart Money Tips</h3>
+<p style="text-align:center;color:var(--gray-400);font-size:.9rem;margin-bottom:18px">Join Americans getting weekly money tips, free tools, and exclusive deals.</p>
+<div class="admin-field"><input type="email" id="popupEmail" placeholder="your@email.com" style="width:100%;padding:12px 14px;border:2px solid var(--gray-100);border-radius:var(--radius-sm);font-size:.95rem"></div>
+<div class="captcha-box">
+<label>Verify you're human: <span id="popupCaptcha"></span> = </label>
+<input type="number" id="popupCaptchaAns" placeholder="?">
+</div>
+<button class="btn btn-purple" style="width:100%;justify-content:center;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="submitPopupNL()">Subscribe Free →</button>
+<p style="text-align:center;font-size:.72rem;color:var(--gray-400);margin-top:10px">No spam. Unsubscribe anytime. Read our <a href="#privacy" onclick="showPage('privacy');closeNLPopup()" style="color:var(--purple)">Privacy Policy</a>.</p>
+</div>
+</div>
+
+<!-- Quiz Modal -->
+<div class="quiz-modal" id="quizModal">
+<div class="quiz-inner">
+<button class="quiz-close" onclick="closeQuiz()">✕</button>
+<div class="quiz-progress"><div class="quiz-progress-bar" id="qpBar"></div></div>
+<div id="quizContent"></div>
+</div>
+</div>
+
 <!-- Nav -->
 <nav class="navbar" id="navbar">
 <div class="nav-inner">
@@ -363,20 +477,41 @@ h3{font-size:clamp(1.15rem,2.2vw,1.5rem)}
 <a href="#home" onclick="showPage('home')">Home</a>
 <a href="#tools" onclick="showPage('tools')">Tools</a>
 <a href="#cards" onclick="showPage('cards')">Credit Cards</a>
+<a href="#loans" onclick="showPage('loans')">Loans</a>
+<a href="#banking" onclick="showPage('banking')">Banking</a>
+<a href="#investing" onclick="showPage('investing')">Investing</a>
 <a href="#blog" onclick="showPage('blog')">Blog</a>
 <a href="#deals" onclick="showPage('deals')">Deals</a>
-<a href="#about" onclick="showPage('about')">About</a>
 <a href="#tools" class="nav-cta" onclick="showPage('tools')">Get Started</a>
 </div>
 <button class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button>
 </div></nav>
 <div class="mobile-menu" id="mobileMenu">
-<a href="#home" onclick="showPage('home');closeMobile()">Home</a>
-<a href="#tools" onclick="showPage('tools');closeMobile()">Tools</a>
-<a href="#cards" onclick="showPage('cards');closeMobile()">Credit Cards</a>
-<a href="#blog" onclick="showPage('blog');closeMobile()">Blog</a>
-<a href="#deals" onclick="showPage('deals');closeMobile()">Deals</a>
-<a href="#about" onclick="showPage('about');closeMobile()">About</a>
+<div style="padding:8px 0 14px;border-bottom:1px solid var(--gray-100);margin-bottom:10px"><input type="text" placeholder="🔍 Search articles, tools..." id="mobileSearch" onkeypress="if(event.key==='Enter'){executeSearch();closeMobile()}" style="width:100%;padding:10px 14px;border:2px solid var(--gray-100);border-radius:var(--radius-sm);font-size:.9rem"></div>
+<a href="#home" onclick="showPage('home');closeMobile()">🏠 Home</a>
+<a href="#tools" onclick="showPage('tools');closeMobile()">🧮 Tools</a>
+<a href="#cards" onclick="showPage('cards');closeMobile()">💳 Credit Cards</a>
+<a href="#loans" onclick="showPage('loans');closeMobile()">🏦 Loans</a>
+<a href="#banking" onclick="showPage('banking');closeMobile()">🏛️ Banking</a>
+<a href="#investing" onclick="showPage('investing');closeMobile()">📈 Investing</a>
+<a href="#blog" onclick="showPage('blog');closeMobile()">📝 Blog</a>
+<a href="#deals" onclick="showPage('deals');closeMobile()">🎁 Deals</a>
+<a href="#about" onclick="showPage('about');closeMobile()">ℹ️ About</a>
+<a href="#contact" onclick="showPage('contact');closeMobile()">✉️ Contact</a>
+<a href="#privacy" onclick="showPage('privacy');closeMobile()">Privacy Policy</a>
+<a href="#terms" onclick="showPage('terms');closeMobile()">Terms & Conditions</a>
+<a href="#disclaimer" onclick="showPage('disclaimer');closeMobile()">Disclaimer</a>
+</div>
+
+<!-- Bottom Mobile Nav -->
+<div class="bottom-nav">
+<div class="bottom-nav-inner">
+<div class="bn-item active" id="bn-home" onclick="showPage('home')"><span class="bn-icon">🏠</span>Home</div>
+<div class="bn-item" id="bn-tools" onclick="showPage('tools')"><span class="bn-icon">🧮</span>Tools</div>
+<div class="bn-item" id="bn-cards" onclick="showPage('cards')"><span class="bn-icon">💳</span>Cards</div>
+<div class="bn-item" id="bn-blog" onclick="showPage('blog')"><span class="bn-icon">📝</span>Blog</div>
+<div class="bn-item" onclick="toggleMobile()"><span class="bn-icon">☰</span>More</div>
+</div>
 </div>
 
 <!-- ===== HOME ===== -->
@@ -596,10 +731,217 @@ h3{font-size:clamp(1.15rem,2.2vw,1.5rem)}
 </div>
 </div>
 
+
+<!-- Mortgage Calculator -->
+<div class="tool-card" style="max-width:900px;margin:24px auto">
+<h2>🏠 Mortgage Calculator</h2>
+<p>Calculate your monthly mortgage payment, total interest, and loan amount. For American homebuyers in California, Texas, Florida, and all 50 states.</p>
+<div class="input-row">
+<div class="input-group"><label>Home Price ($)</label><input type="number" id="mHome" value="400000" min="0" oninput="calcMort()"></div>
+<div class="input-group"><label>Down Payment ($)</label><input type="number" id="mDown" value="80000" min="0" oninput="calcMort()"></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label>Loan Term (Years)</label><select id="mTerm" onchange="calcMort()"><option value="30" selected>30 Years</option><option value="20">20 Years</option><option value="15">15 Years</option><option value="10">10 Years</option></select></div>
+<div class="input-group"><label>Interest Rate (%)</label><input type="number" id="mRate" value="6.5" min="0" step="0.1" oninput="calcMort()"></div>
+</div>
+<div class="results-box">
+<div class="result-item"><span class="result-label">Monthly Payment</span><span class="result-value big pos" id="mPmt">$0</span></div>
+<div class="result-item"><span class="result-label">Loan Amount</span><span class="result-value" id="mLoan">$0</span></div>
+<div class="result-item"><span class="result-label">Total Interest</span><span class="result-value neg" id="mInt">$0</span></div>
+<div class="result-item"><span class="result-label">Total Cost of Home</span><span class="result-value" id="mTotal">$0</span></div>
+</div>
+<p style="font-size:.82rem;color:var(--gray-400);margin-top:14px">💡 Rates subject to change. Actual rates depend on credit score and lender. Always shop multiple lenders.</p>
+</div>
+
+<!-- Personal Loan Calculator -->
+<div class="tool-card" style="max-width:900px;margin:24px auto">
+<h2>💵 Personal Loan Calculator</h2>
+<p>Compare personal loan options across lenders. See monthly payments, total interest, and payoff timeline.</p>
+<div class="input-row">
+<div class="input-group"><label>Loan Amount ($)</label><input type="number" id="plAmt" value="10000" min="0" oninput="calcPL()"></div>
+<div class="input-group"><label>Interest Rate (%)</label><input type="number" id="plRate" value="10" min="0" step="0.1" oninput="calcPL()"></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label>Loan Term (Years)</label><select id="plTerm" onchange="calcPL()"><option value="1">1 Year</option><option value="2">2 Years</option><option value="3" selected>3 Years</option><option value="4">4 Years</option><option value="5">5 Years</option><option value="7">7 Years</option></select></div>
+<div class="input-group"><label>Origination Fee (%)</label><input type="number" id="plFee" value="2" min="0" step="0.1" oninput="calcPL()"></div>
+</div>
+<div class="results-box">
+<div class="result-item"><span class="result-label">Monthly Payment</span><span class="result-value big pos" id="plPmt">$0</span></div>
+<div class="result-item"><span class="result-label">Total Interest</span><span class="result-value neg" id="plInt">$0</span></div>
+<div class="result-item"><span class="result-label">Origination Fee</span><span class="result-value neg" id="plFeeAmt">$0</span></div>
+<div class="result-item"><span class="result-label">Total Cost</span><span class="result-value" id="plTotal">$0</span></div>
+</div>
+</div>
+
+<!-- Auto Loan Calculator -->
+<div class="tool-card" style="max-width:900px;margin:24px auto">
+<h2>🚗 Auto Loan Calculator</h2>
+<p>Plan your car purchase with real numbers. Calculate monthly payment, total interest, and whether to buy new or used.</p>
+<div class="input-row">
+<div class="input-group"><label>Car Price ($)</label><input type="number" id="aPrice" value="30000" min="0" oninput="calcAuto()"></div>
+<div class="input-group"><label>Down Payment ($)</label><input type="number" id="aDown" value="5000" min="0" oninput="calcAuto()"></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label>Trade-In Value ($)</label><input type="number" id="aTrade" value="0" min="0" oninput="calcAuto()"></div>
+<div class="input-group"><label>Sales Tax (%)</label><input type="number" id="aTax" value="6" min="0" step="0.1" oninput="calcAuto()"></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label>Loan Term (Years)</label><select id="aTerm" onchange="calcAuto()"><option value="3">3 Years</option><option value="4">4 Years</option><option value="5" selected>5 Years</option><option value="6">6 Years</option><option value="7">7 Years</option></select></div>
+<div class="input-group"><label>Interest Rate (%)</label><input type="number" id="aRate" value="7" min="0" step="0.1" oninput="calcAuto()"></div>
+</div>
+<div class="results-box">
+<div class="result-item"><span class="result-label">Monthly Payment</span><span class="result-value big pos" id="aPmt">$0</span></div>
+<div class="result-item"><span class="result-label">Loan Amount</span><span class="result-value" id="aLoan">$0</span></div>
+<div class="result-item"><span class="result-label">Total Interest</span><span class="result-value neg" id="aInt">$0</span></div>
+<div class="result-item"><span class="result-label">Total Cost</span><span class="result-value" id="aTotal">$0</span></div>
+</div>
+</div>
+
+<!-- Investment Growth Calculator -->
+<div class="tool-card" style="max-width:900px;margin:24px auto">
+<h2>📈 Investment Growth Calculator</h2>
+<p>See how your investments can grow over time with compound returns. Plan for retirement, a house, or any long-term goal.</p>
+<div class="input-row">
+<div class="input-group"><label>Starting Amount ($)</label><input type="number" id="iStart" value="10000" min="0" oninput="calcInv()"></div>
+<div class="input-group"><label>Monthly Contribution ($)</label><input type="number" id="iMonth" value="500" min="0" oninput="calcInv()"></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label>Annual Return (%)</label><input type="number" id="iRate" value="7" min="0" step="0.1" oninput="calcInv()"></div>
+<div class="input-group"><label>Years to Grow</label><input type="number" id="iYears" value="20" min="1" max="50" oninput="calcInv()"></div>
+</div>
+<div class="results-box">
+<div class="result-item"><span class="result-label">Final Balance</span><span class="result-value big pos" id="iFinal">$0</span></div>
+<div class="result-item"><span class="result-label">Total Contributed</span><span class="result-value" id="iContrib">$0</span></div>
+<div class="result-item"><span class="result-label">Total Growth</span><span class="result-value pos" id="iGrowth">$0</span></div>
+</div>
+<p style="font-size:.82rem;color:var(--gray-400);margin-top:14px">💡 Historical stock market average is ~7-10% annually. Past performance does not guarantee future results.</p>
+</div>
+
+<!-- Retirement Calculator -->
+<div class="tool-card" style="max-width:900px;margin:24px auto">
+<h2>🌴 Retirement Calculator</h2>
+<p>Plan your retirement with confidence. See if you are on track for the retirement you deserve.</p>
+<div class="input-row">
+<div class="input-group"><label>Current Age</label><input type="number" id="rAge" value="35" min="18" max="75" oninput="calcRet()"></div>
+<div class="input-group"><label>Retirement Age</label><input type="number" id="rRetAge" value="65" min="40" max="85" oninput="calcRet()"></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label>Current Savings ($)</label><input type="number" id="rSaved" value="50000" min="0" oninput="calcRet()"></div>
+<div class="input-group"><label>Monthly Contribution ($)</label><input type="number" id="rMonth" value="800" min="0" oninput="calcRet()"></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label>Annual Return (%)</label><input type="number" id="rRate" value="7" min="0" step="0.1" oninput="calcRet()"></div>
+<div class="input-group"><label>Years in Retirement</label><input type="number" id="rYrs" value="25" min="10" max="40" oninput="calcRet()"></div>
+</div>
+<div class="results-box">
+<div class="result-item"><span class="result-label">Savings at Retirement</span><span class="result-value big pos" id="rFinal">$0</span></div>
+<div class="result-item"><span class="result-label">Monthly Retirement Income</span><span class="result-value pos" id="rMonIn">$0</span></div>
+<div class="result-item"><span class="result-label">Total Contributions</span><span class="result-value" id="rContrib">$0</span></div>
+</div>
+</div>
+
+<!-- Net Worth Tracker -->
+<div class="tool-card" style="max-width:900px;margin:24px auto">
+<h2>💎 Net Worth Tracker</h2>
+<p>Calculate your total net worth. Track what you own minus what you owe to measure financial progress.</p>
+<h3 style="margin-top:14px;margin-bottom:10px;color:var(--green);font-size:1rem;font-family:'Space Grotesk',sans-serif">Assets (What You Own)</h3>
+<div class="input-row">
+<div class="input-group"><label>Cash & Checking ($)</label><input type="number" id="nwCash" value="5000" min="0" oninput="calcNW()"></div>
+<div class="input-group"><label>Savings ($)</label><input type="number" id="nwSav" value="10000" min="0" oninput="calcNW()"></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label>Investments ($)</label><input type="number" id="nwInv" value="25000" min="0" oninput="calcNW()"></div>
+<div class="input-group"><label>Retirement Accounts ($)</label><input type="number" id="nwRet" value="50000" min="0" oninput="calcNW()"></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label>Home Value ($)</label><input type="number" id="nwHome" value="350000" min="0" oninput="calcNW()"></div>
+<div class="input-group"><label>Vehicles Value ($)</label><input type="number" id="nwCars" value="20000" min="0" oninput="calcNW()"></div>
+</div>
+<h3 style="margin-top:18px;margin-bottom:10px;color:var(--red);font-size:1rem;font-family:'Space Grotesk',sans-serif">Liabilities (What You Owe)</h3>
+<div class="input-row">
+<div class="input-group"><label>Mortgage ($)</label><input type="number" id="nwMort" value="250000" min="0" oninput="calcNW()"></div>
+<div class="input-group"><label>Car Loans ($)</label><input type="number" id="nwAuto" value="15000" min="0" oninput="calcNW()"></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label>Student Loans ($)</label><input type="number" id="nwStud" value="20000" min="0" oninput="calcNW()"></div>
+<div class="input-group"><label>Credit Card Debt ($)</label><input type="number" id="nwCC" value="3000" min="0" oninput="calcNW()"></div>
+</div>
+<div class="results-box">
+<div class="result-item"><span class="result-label">Total Assets</span><span class="result-value pos" id="nwAssets">$0</span></div>
+<div class="result-item"><span class="result-label">Total Liabilities</span><span class="result-value neg" id="nwLiab">$0</span></div>
+<div class="result-item"><span class="result-label">Your Net Worth</span><span class="result-value big pos" id="nwTotal">$0</span></div>
+</div>
+<p style="font-size:.82rem;color:var(--gray-400);margin-top:14px">💡 Track your net worth quarterly to measure your financial progress over time.</p>
+</div>
+
+</div></section>
+
+<!-- ===== LOANS PAGE ===== -->
+<div class="page" id="page-loans">
+<section class="hero" style="padding:110px 0 56px">
+<div class="container">
+<div style="background:#FFFBEB;border:1px solid #F59E0B;border-radius:10px;padding:14px 20px;margin-bottom:24px;font-size:.85rem;color:#92400E"><strong>⚠️ Advertiser Disclosure:</strong> SavingsClub may earn a commission when you apply through our partner links. This does not affect our editorial ratings.</div>
+<div class="hero-content"><span class="section-tag" style="background:rgba(0,224,255,.15);color:var(--gold)">Loans</span>
+<h1>Smart Loan Decisions for <span>Every American</span></h1>
+<p>Compare mortgage, personal, auto, and student loans. Calculate payments before you borrow — save thousands in interest.</p></div></div></section>
+
+<section class="section"><div class="container">
+<div class="section-header"><span class="section-tag">Loan Types</span><h2>Find the Right Loan</h2></div>
+<div class="grid-3">
+<div class="card"><div class="card-icon purple">🏠</div><h3>Mortgage Loans</h3><p style="color:var(--gray-500)">Fixed, adjustable, FHA, VA, and jumbo mortgages. Compare rates from top lenders nationwide.</p><p style="margin-top:10px;font-size:.85rem"><strong>Current average 30-year rate:</strong> ~6.5% (subject to change)</p><button class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="showPage('tools');setTimeout(()=>document.querySelector('[id=mHome]')?.scrollIntoView({behavior:'smooth'}),100)">Use Mortgage Calculator →</button></div>
+<div class="card"><div class="card-icon gold">💵</div><h3>Personal Loans</h3><p style="color:var(--gray-500)">Unsecured loans for debt consolidation, home improvement, weddings, or unexpected expenses.</p><p style="margin-top:10px;font-size:.85rem"><strong>Typical rates:</strong> 6%-36% APR based on credit</p><button class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="showPage('tools');setTimeout(()=>document.querySelector('[id=plAmt]')?.scrollIntoView({behavior:'smooth'}),100)">Personal Loan Calculator →</button></div>
+<div class="card"><div class="card-icon blue">🚗</div><h3>Auto Loans</h3><p style="color:var(--gray-500)">New and used car financing. Compare dealer financing versus bank loans to save money.</p><p style="margin-top:10px;font-size:.85rem"><strong>Typical rates:</strong> 5%-15% APR</p><button class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="showPage('tools');setTimeout(()=>document.querySelector('[id=aPrice]')?.scrollIntoView({behavior:'smooth'}),100)">Auto Loan Calculator →</button></div>
+<div class="card"><div class="card-icon green">🎓</div><h3>Student Loans</h3><p style="color:var(--gray-500)">Federal and private student loans. Understand your options, refinancing, and forgiveness programs.</p><p style="margin-top:10px;font-size:.85rem"><strong>Federal rates:</strong> Fixed 5.5%-8.05% (2026)</p><a href="[AFFILIATE LINK PLACEHOLDER]" class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="trackClick(event)">Compare Student Loans →</a></div>
+<div class="card"><div class="card-icon red">🏗️</div><h3>Home Equity Loans</h3><p style="color:var(--gray-500)">HELOCs and home equity loans. Tap into your home's value for renovations or major expenses.</p><p style="margin-top:10px;font-size:.85rem"><strong>Typical HELOC:</strong> 7%-10% variable APR</p><a href="[AFFILIATE LINK PLACEHOLDER]" class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="trackClick(event)">Compare HELOCs →</a></div>
+<div class="card"><div class="card-icon gold">💼</div><h3>Business Loans</h3><p style="color:var(--gray-500)">SBA loans, term loans, and lines of credit for small business owners and entrepreneurs.</p><p style="margin-top:10px;font-size:.85rem"><strong>SBA 7(a):</strong> Variable rates based on prime</p><a href="[AFFILIATE LINK PLACEHOLDER]" class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="trackClick(event)">Compare Business Loans →</a></div>
+</div>
+<p style="font-size:.82rem;color:var(--gray-400);margin-top:20px;text-align:center">💡 All rates and terms are subject to change and lender approval. Actual offers depend on credit history, income, and other factors.</p>
 </div></section>
 </div>
 
-<!-- ===== CREDIT CARDS ===== -->
+<!-- ===== BANKING PAGE ===== -->
+<div class="page" id="page-banking">
+<section class="hero" style="padding:110px 0 56px">
+<div class="container"><div class="hero-content"><span class="section-tag" style="background:rgba(0,224,255,.15);color:var(--gold)">Banking</span>
+<h1>Banks Built for <span>Smart Americans</span></h1>
+<p>Compare checking, savings, CDs, and money market accounts. Find banks that pay you better and charge less.</p></div></div></section>
+
+<section class="section"><div class="container">
+<div class="section-header"><span class="section-tag">Account Types</span><h2>Find the Right Account</h2></div>
+<div class="grid-3">
+<div class="card"><div class="card-icon green">💰</div><h3>High-Yield Savings</h3><p style="color:var(--gray-500)">Online savings accounts paying 10x the national average. FDIC-insured up to $250,000.</p><p style="margin-top:10px;font-size:.85rem"><strong>Top rates 2026:</strong> 4.0%-5.0% APY (subject to change)</p><button class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="showPage('deals')">See Best Savings Deals →</button></div>
+<div class="card"><div class="card-icon blue">🏦</div><h3>Free Checking</h3><p style="color:var(--gray-500)">No monthly fees, no minimums, free ATM access. Perfect for everyday banking.</p><p style="margin-top:10px;font-size:.85rem"><strong>Best picks:</strong> Ally, Discover, SoFi, Chime</p><a href="[AFFILIATE LINK PLACEHOLDER]" class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="trackClick(event)">Compare Checking →</a></div>
+<div class="card"><div class="card-icon gold">📅</div><h3>CDs (Certificates of Deposit)</h3><p style="color:var(--gray-500)">Lock in guaranteed rates for 3 months to 5 years. Best for money you do not need soon.</p><p style="margin-top:10px;font-size:.85rem"><strong>Current 12-month CDs:</strong> ~4.5%-5.2% APY</p><a href="[AFFILIATE LINK PLACEHOLDER]" class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="trackClick(event)">Compare CDs →</a></div>
+<div class="card"><div class="card-icon purple">📊</div><h3>Money Market Accounts</h3><p style="color:var(--gray-500)">Hybrid of checking and savings with check-writing and high interest rates.</p><p style="margin-top:10px;font-size:.85rem"><strong>Typical rates:</strong> 3.5%-4.8% APY</p><a href="[AFFILIATE LINK PLACEHOLDER]" class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="trackClick(event)">Compare MMAs →</a></div>
+<div class="card"><div class="card-icon red">👶</div><h3>Kids & Teen Accounts</h3><p style="color:var(--gray-500)">Teach kids about money with accounts designed for young savers. Parental controls included.</p><p style="margin-top:10px;font-size:.85rem"><strong>Best for kids:</strong> Capital One Kids, Chase First Banking</p><a href="[AFFILIATE LINK PLACEHOLDER]" class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="trackClick(event)">Compare Kids Accounts →</a></div>
+<div class="card"><div class="card-icon blue">💼</div><h3>Business Banking</h3><p style="color:var(--gray-500)">Business checking, savings, and merchant services for LLCs and small businesses.</p><p style="margin-top:10px;font-size:.85rem"><strong>Top picks:</strong> Chase, Mercury, Bluevine, Relay</p><a href="[AFFILIATE LINK PLACEHOLDER]" class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="trackClick(event)">Compare Business Banks →</a></div>
+</div>
+<p style="font-size:.82rem;color:var(--gray-400);margin-top:20px;text-align:center">💡 All rates are estimates as of early 2026 and change frequently. Verify current APYs directly with each bank.</p>
+</div></section>
+</div>
+
+<!-- ===== INVESTING PAGE ===== -->
+<div class="page" id="page-investing">
+<section class="hero" style="padding:110px 0 56px">
+<div class="container"><div class="hero-content"><span class="section-tag" style="background:rgba(0,224,255,.15);color:var(--gold)">Investing</span>
+<h1>Grow Your Money <span>Smarter</span></h1>
+<p>Compare brokerages, robo-advisors, and investment accounts. Start investing with as little as $5.</p></div></div></section>
+
+<section class="section"><div class="container">
+<div class="section-header"><span class="section-tag">Investment Types</span><h2>Find the Right Platform</h2></div>
+<div class="grid-3">
+<div class="card"><div class="card-icon green">📈</div><h3>Stock Brokerages</h3><p style="color:var(--gray-500)">Commission-free trading platforms for stocks, ETFs, and options. Invest on your own terms.</p><p style="margin-top:10px;font-size:.85rem"><strong>Top picks:</strong> Fidelity, Charles Schwab, Robinhood, Public</p><a href="[AFFILIATE LINK PLACEHOLDER]" class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="trackClick(event)">Compare Brokerages →</a></div>
+<div class="card"><div class="card-icon blue">🤖</div><h3>Robo-Advisors</h3><p style="color:var(--gray-500)">Automated investing with low fees. Perfect for hands-off investors who want diversification.</p><p style="margin-top:10px;font-size:.85rem"><strong>Best options:</strong> Betterment, Wealthfront, Ellevest, SoFi</p><a href="[AFFILIATE LINK PLACEHOLDER]" class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="trackClick(event)">Compare Robo-Advisors →</a></div>
+<div class="card"><div class="card-icon purple">🌴</div><h3>Retirement Accounts</h3><p style="color:var(--gray-500)">401(k), Traditional IRA, Roth IRA, and SEP IRAs. Tax advantages for long-term growth.</p><p style="margin-top:10px;font-size:.85rem"><strong>2026 limits:</strong> 401(k) $23,500 / IRA $7,000</p><button class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="showPage('tools');setTimeout(()=>document.querySelector('[id=rAge]')?.scrollIntoView({behavior:'smooth'}),100)">Use Retirement Calc →</button></div>
+<div class="card"><div class="card-icon gold">🏘️</div><h3>Real Estate Investing</h3><p style="color:var(--gray-500)">REITs, rental properties, and crowdfunding. Diversify beyond stocks with real estate exposure.</p><p style="margin-top:10px;font-size:.85rem"><strong>Popular platforms:</strong> Fundrise, Arrived, Roots</p><a href="[AFFILIATE LINK PLACEHOLDER]" class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="trackClick(event)">Explore Real Estate →</a></div>
+<div class="card"><div class="card-icon red">💎</div><h3>Crypto Investing</h3><p style="color:var(--gray-500)">Buy and sell Bitcoin, Ethereum, and other cryptocurrencies on regulated US exchanges.</p><p style="margin-top:10px;font-size:.85rem"><strong>Top US exchanges:</strong> Coinbase, Kraken, Gemini</p><a href="[AFFILIATE LINK PLACEHOLDER]" class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="trackClick(event)">Compare Crypto →</a></div>
+<div class="card"><div class="card-icon blue">🎓</div><h3>529 College Savings</h3><p style="color:var(--gray-500)">Tax-advantaged education savings plans for children. Every state offers different benefits.</p><p style="margin-top:10px;font-size:.85rem"><strong>Best 529 plans:</strong> NY 529, Utah 529, California ScholarShare</p><a href="[AFFILIATE LINK PLACEHOLDER]" class="btn btn-purple btn-sm" style="margin-top:12px;background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="trackClick(event)">Compare 529 Plans →</a></div>
+</div>
+<p style="font-size:.82rem;color:var(--gray-400);margin-top:20px;text-align:center;line-height:1.6">⚠️ <strong>Investment Risk Warning:</strong> All investments carry risk of loss. Past performance does not guarantee future results. This is not investment advice. Consult a licensed financial advisor before making investment decisions.</p>
+</div></section>
+</div>
+
+
 <div class="page" id="page-cards">
 <section class="hero" style="padding:110px 0 56px">
 <div class="container"><div style="background:#FFFBEB;border:1px solid #F59E0B;border-radius:10px;padding:14px 20px;margin-bottom:24px;font-size:.85rem;color:#92400E;"><strong>⚠️ Advertiser Disclosure:</strong> SavingsClub may earn a commission when you apply through our links at no extra cost to you. This does not affect our editorial ratings or recommendations.</div><div class="hero-content"><span class="section-tag" style="background:rgba(245,166,35,.15);color:var(--gold)">Credit Cards</span><h1>Find the Best Credit Card for <span>Your Life</span> — Updated 2026</h1><p>Expert-reviewed picks for every type of spender across all 50 states.</p></div></div></section>
@@ -811,7 +1153,7 @@ h3{font-size:clamp(1.15rem,2.2vw,1.5rem)}
 <div class="input-group"><label>Subject</label><select id="contactSubject"><option>General Inquiry</option><option>Tool Feedback</option><option>Partnership / Advertising</option><option>Privacy Request</option><option>Report an Issue</option><option>Other</option></select></div>
 <div class="input-group"><label>Message</label><textarea id="contactMsg" placeholder="How can we help you?" style="width:100%;padding:12px 16px;border:2px solid var(--gray-100);border-radius:var(--radius-sm);font-size:.93rem;min-height:140px;resize:vertical;transition:var(--transition)" onfocus="this.style.borderColor='var(--purple)'" onblur="this.style.borderColor='var(--gray-100)'"></textarea></div>
 <button class="btn btn-purple" style="width:100%" onclick="submitContact()">Send Message</button>
-<p style="font-size:.78rem;color:var(--gray-400);margin-top:10px">We typically respond within 1-2 business days.</p>
+<p style="font-size:.78rem;color:var(--gray-400);margin-top:10px">We typically respond within 7 business days.</p>
 </div>
 <div>
 <div class="card" style="margin-bottom:20px">
@@ -822,9 +1164,10 @@ h3{font-size:clamp(1.15rem,2.2vw,1.5rem)}
 </div>
 <div class="card" style="margin-bottom:20px">
 <h3 style="margin-bottom:14px">⏱️ Response Times</h3>
-<p style="font-size:.9rem;color:var(--gray-500)">General inquiries: 1-2 business days</p>
-<p style="font-size:.9rem;color:var(--gray-500)">Privacy requests: 5-10 business days</p>
-<p style="font-size:.9rem;color:var(--gray-500)">Partnership inquiries: 3-5 business days</p>
+<p style="font-size:.9rem;color:var(--gray-500)">General inquiries: within 7 business days</p>
+<p style="font-size:.9rem;color:var(--gray-500)">Privacy requests: within 7 business days</p>
+<p style="font-size:.9rem;color:var(--gray-500)">Partnership inquiries: within 7 business days</p>
+<p style="font-size:.9rem;color:var(--gray-500)">Legal matters: within 7 business days</p>
 </div>
 <div class="card" style="margin-bottom:20px">
 <h3 style="margin-bottom:14px">📍 Location</h3>
@@ -1090,110 +1433,7 @@ function renderDeals(){
 }
 
 // ===== BLOG =====
-const generatedPosts=[{id:1776265588300,title:"Smart Ways to Use Your Tax Refund: Making Every Dollar Count for Your Financial Future",cat:"Tips",date:"April 15, 2026",preview:"Expert guide: smart ways to use your tax refund.",content:`<p style="font-size:.82rem;color:#888;margin-bottom:16px">⚠️ Rates, offers, and financial information in this article reflect conditions as of early 2026. Always verify current information with providers before making financial decisions.</p>
-
-<h1>Smart Ways to Use Your Tax Refund: Making Every Dollar Count for Your Financial Future</h1>
-
-<p>Tax refund season brings a welcomed windfall for millions of Americans, with the average refund hovering around $3,000. While it's tempting to treat this money as "found cash" for a shopping spree or vacation, your tax refund represents a golden opportunity to strengthen your financial foundation. Whether you're in California dealing with high living costs or managing expenses in Texas with no state income tax, strategic use of your refund can pay dividends for years to come.</p>
-
-<p>The key to maximizing your refund's impact lies in balancing immediate needs with long-term financial goals. Smart money moves now can reduce stress, build wealth, and create more opportunities down the road. Let's explore the most effective ways to put your tax refund to work for your financial future.</p>
-
-<h2>Build Your Emergency Safety Net First</h2>
-
-<p>Before considering any other options, prioritize establishing or strengthening your emergency fund. Financial experts consistently recommend having three to six months of living expenses saved for unexpected situations like job loss, medical emergencies, or major home repairs. If you're living paycheck to paycheck in expensive markets like New York or California, even a modest emergency fund can prevent financial catastrophe.</p>
-
-<p>Start by calculating your monthly essential expenses including housing, utilities, food, transportation, and minimum debt payments. If you don't have any emergency savings, use your entire refund to jumpstart this fund. For those with some savings already, consider topping off your emergency fund to reach that crucial three-month mark.</p>
-
-<p>Keep your emergency fund in a high-yield savings account that's easily accessible but separate from your checking account. Many online banks and credit unions offer competitive rates that can help your emergency fund grow while remaining liquid. This separation reduces the temptation to dip into these funds for non-emergencies.</p>
-
-<p>Remember that emergency funds aren't just for major crises. They also provide peace of mind and flexibility when opportunities arise, such as taking advantage of job training programs or starting a side business. Having this financial cushion can transform how you approach career and life decisions.</p>
-
-<h2>Tackle High-Interest Debt Strategically</h2>
-
-<p>If you're carrying high-interest debt, particularly credit card balances, your tax refund can deliver immediate returns by eliminating these expensive obligations. Credit card interest rates often exceed 20% annually, making debt payoff one of the highest guaranteed returns on your money.</p>
-
-<p>Focus on paying off the highest interest rate debts first, a strategy known as the avalanche method. This approach minimizes the total interest you'll pay over time. For example, if you have credit card debt at 24% interest and a car loan at 6%, prioritize the credit card debt for maximum financial impact.</p>
-
-<p>If you have multiple credit cards with similar interest rates, consider using the snowball method instead, paying off the smallest balances first. While this approach may cost slightly more in interest, the psychological boost from eliminating entire debts can provide momentum to continue your debt payoff journey.</p>
-
-<p>Don't overlook student loans when considering debt payoff strategies. While student loan interest rates are typically lower than credit cards, eliminating this debt can free up monthly cash flow and reduce your overall financial stress. This is particularly valuable if you're in states like Illinois or Pennsylvania where job markets can be competitive.</p>
-
-<h2>Invest in Your Long-Term Financial Growth</h2>
-
-<p>Once you've addressed immediate financial security through emergency savings and debt reduction, consider investing your refund for long-term growth. The power of compound interest means money invested today can grow significantly over decades, making this strategy particularly valuable for younger taxpayers.</p>
-
-<p>If your employer offers a 401(k) match and you're not maximizing it, increase your contributions using your refund as a bridge. This strategy provides immediate returns through the employer match while boosting your retirement savings. You can temporarily increase your 401(k) contribution percentage and use your refund to cover the reduced take-home pay.</p>
-
-<p>For those already maximizing employer matches, consider opening or funding an Individual Retirement Account (IRA). Traditional IRAs may provide immediate tax benefits, while Roth IRAs offer tax-free growth and withdrawals in retirement. The choice depends on your current tax situation and future expectations.</p>
-
-<p>Taxable investment accounts offer more flexibility than retirement accounts, allowing access to funds for major goals like homeownership or starting a business. Low-cost index funds provide broad market exposure with minimal fees, making them excellent choices for beginning investors across states from Florida to Michigan.</p>
-
-<h2>Invest in Yourself and Future Earnings</h2>
-
-<p>Sometimes the best investment is in your own skills and capabilities. Using your tax refund for education, training, or career development can generate returns that far exceed traditional investments. This approach is particularly valuable in rapidly changing job markets found in tech hubs like California or diverse economies like North Carolina.</p>
-
-<p>Consider professional certifications, online courses, or degree programs that align with your career goals. Many fields offer industry-recognized certifications that can lead to immediate salary increases or promotion opportunities. Research which qualifications are most valued in your industry and geographic area.</p>
-
-<p>Don't overlook the value of building practical skills that can reduce your living expenses or create additional income streams. Learning home maintenance skills can save thousands in repair costs, while developing digital skills might open freelancing opportunities that supplement your primary income.</p>
-
-<p>Health investments also deserve consideration. Using your refund for preventive healthcare, dental work, or mental health support can prevent larger expenses later while improving your quality of life. This is especially important if you're between jobs or have limited healthcare coverage.</p>
-
-<p>Creating a dedicated workspace for remote work or side businesses can also generate excellent returns. Whether you're in Ohio or Georgia, having a proper home office setup can improve productivity and potentially qualify for tax deductions if you're self-employed.</p>
-
-<div class="cta-box">
-<h3>Plan Your Refund Strategy</h3>
-<p>Use our comprehensive budget planner to determine the optimal allocation of your tax refund across emergency savings, debt payoff, and investment goals for maximum financial impact.</p>
-<a href="#tools" class="btn btn-gold" onclick="showPage('tools')" style="margin-top:10px">Budget Planner →</a>
-</div>`},
-{id:1776437839733,title:"Best Strategies for Saving on Healthcare Costs in 2026",cat:"Tips",date:"April 17, 2026",preview:"Expert guide: best strategies for saving on healthcare costs.",content:`<p style="font-size:.82rem;color:#888;margin-bottom:16px">⚠️ Rates, offers, and financial information in this article reflect conditions as of early 2026. Always verify current information with providers before making financial decisions.</p>
-
-<h1>Best Strategies for Saving on Healthcare Costs in 2026</h1>
-
-Healthcare expenses continue to be one of the largest financial burdens for American families, with costs varying significantly across states like California, Texas, and New York. Whether you're dealing with routine checkups or unexpected medical emergencies, implementing smart savings strategies can help you manage these essential expenses without compromising your health or financial stability.
-
-<h2>Maximize Your Health Savings Account (HSA) Benefits</h2>
-
-If you have access to a Health Savings Account through a high-deductible health plan, you're sitting on one of the most powerful tax-advantaged savings tools available. HSAs offer a triple tax benefit: contributions are tax-deductible, funds grow tax-free, and withdrawals for qualified medical expenses are tax-free. In 2026, contribution limits remain generous, allowing individuals to set aside significant amounts for healthcare costs.
-
-The key to maximizing your HSA is treating it as both a short-term healthcare fund and a long-term investment vehicle. Pay for smaller medical expenses out-of-pocket when possible, allowing your HSA balance to grow through investments. Keep detailed records of your medical expenses, as you can reimburse yourself tax-free from your HSA even years later. This strategy works particularly well for residents in high-tax states like California and New York, where the state tax savings can be substantial.
-
-Consider contributing the maximum amount allowed if your budget permits. Even if you don't use all the funds immediately, HSA money rolls over year after year, and after age 65, you can withdraw funds for any purpose without penalty (though you'll pay income tax on non-medical withdrawals).
-
-<h2>Shop Smart for Healthcare Services</h2>
-
-Healthcare pricing varies dramatically, even within the same city. A routine MRI might cost $1,200 at one facility and $400 at another just across town. This price variation is especially pronounced in states like Florida and Texas, where healthcare markets can be highly competitive.
-
-Start by understanding your insurance coverage thoroughly. Know your deductible, copays, and which providers are in-network. Out-of-network providers can cost significantly more, sometimes doubling or tripling your expenses. Before scheduling any non-emergency procedure, call your insurance company to verify coverage and get an estimate of your out-of-pocket costs.
-
-For prescription medications, compare prices across different pharmacies and consider generic alternatives when available. Many major retailers and grocery chains offer $4 generic prescription programs that can provide substantial savings. Additionally, prescription discount programs and manufacturer coupons can reduce costs for both generic and brand-name medications.
-
-Urgent care centers often provide a cost-effective alternative to emergency room visits for non-life-threatening conditions. An urgent care visit might cost $150-200, while an emergency room visit for the same condition could easily exceed $1,000. This is particularly relevant in states like Georgia and Pennsylvania, where urgent care networks have expanded significantly.
-
-<h2>Leverage Preventive Care and Wellness Programs</h2>
-
-The most effective way to control healthcare costs is to avoid major health issues altogether. Most insurance plans cover preventive care at 100%, including annual physicals, vaccinations, and screenings. Take advantage of these covered services to catch potential health issues early when they're typically less expensive to treat.
-
-Many employers and insurance companies offer wellness programs that provide financial incentives for healthy behaviors. These might include gym membership reimbursements, smoking cessation programs, or premium discounts for participating in health screenings. In states like Illinois and Michigan, where employer wellness programs are particularly common, participants can save hundreds of dollars annually on insurance premiums.
-
-Consider investing in your health through lifestyle changes that can reduce long-term healthcare costs. Regular exercise, a healthy diet, stress management, and adequate sleep can prevent costly chronic conditions like diabetes, heart disease, and hypertension. While these investments require upfront time and sometimes money, they typically pay significant dividends in reduced healthcare expenses over time.
-
-Dental and vision care often require separate planning since they're frequently not included in basic health insurance. Regular dental cleanings and eye exams can prevent more expensive procedures later. Many areas, particularly in states like Ohio and North Carolina, have dental schools and optometry programs that offer discounted services provided by students under professional supervision.
-
-<h2>Navigate Insurance Options Strategically</h2>
-
-Choosing the right health insurance plan requires careful analysis of your expected healthcare needs and financial situation. While high-deductible plans often have lower monthly premiums, they require you to pay more out-of-pocket before insurance coverage kicks in. These plans work well for healthy individuals who primarily need coverage for catastrophic events and want to maximize HSA contributions.
-
-Traditional plans with higher premiums but lower deductibles might be more cost-effective if you have chronic conditions requiring regular medical care or prescription medications. Calculate your total annual healthcare costs under different plan scenarios, including premiums, deductibles, and expected medical expenses.
-
-If you're self-employed or between jobs, explore options beyond traditional insurance. Healthcare sharing ministries, short-term medical insurance, and COBRA continuation coverage each have different benefits and limitations. Some states have more robust individual insurance marketplaces than others, with residents of states like California and New York typically having more plan options.
-
-For families, consider whether separate or family coverage makes more financial sense. Sometimes individual plans for each family member cost less than a family plan, particularly if some family members are generally healthy while others require more medical care.
-
-Don't overlook supplemental insurance options for specific needs. Critical illness insurance, accident insurance, or hospital indemnity plans can provide additional financial protection at relatively low costs. These products are especially valuable for people with high-deductible health plans who want extra protection against major medical expenses.
-
-By implementing these strategies systematically, you can significantly reduce your healthcare costs while maintaining quality care. The key is to be proactive, stay informed about your options, and treat healthcare spending as a manageable part of your overall financial plan.
-
-<div class="cta-box"><h3>Plan Your Healthcare Budget</h3><p>Calculate how much you should allocate for healthcare expenses and build a comprehensive savings strategy that includes emergency funds and long-term healthcare planning.</p><a href="#tools" class="btn btn-gold" onclick="showPage('tools')" style="margin-top:10px">Budget Planner →</a></div>`}]; // __GENERATED_POSTS__
+// __GENERATED_POSTS__
 function allPosts(){const custom=JSON.parse(localStorage.getItem('sc_custom2')||'[]');return[...blogs,...(typeof generatedPosts!=='undefined'?generatedPosts:[]),...custom]}
 function renderBlog(){
   const posts=allPosts();
@@ -1516,6 +1756,248 @@ function renderStats(){
   document.getElementById('stClicks').textContent=clicks;
 }
 
+
+// ===== NEW CALCULATORS =====
+function calcMort(){
+  const h=+(document.getElementById('mHome')?.value)||0;
+  const d=+(document.getElementById('mDown')?.value)||0;
+  const y=+(document.getElementById('mTerm')?.value)||30;
+  const r=(+(document.getElementById('mRate')?.value)||0)/100/12;
+  const loan=h-d;const n=y*12;
+  if(!document.getElementById('mPmt'))return;
+  if(r===0){document.getElementById('mPmt').textContent=fmt(loan/n);document.getElementById('mLoan').textContent=fmt(loan);document.getElementById('mInt').textContent=fmt(0);document.getElementById('mTotal').textContent=fmt(h);return}
+  const p=loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  const totalInt=(p*n)-loan;
+  document.getElementById('mPmt').textContent=fmt(p);
+  document.getElementById('mLoan').textContent=fmt(loan);
+  document.getElementById('mInt').textContent=fmt(totalInt);
+  document.getElementById('mTotal').textContent=fmt(h+totalInt);
+}
+function calcPL(){
+  const amt=+(document.getElementById('plAmt')?.value)||0;
+  const r=(+(document.getElementById('plRate')?.value)||0)/100/12;
+  const y=+(document.getElementById('plTerm')?.value)||3;
+  const fee=(+(document.getElementById('plFee')?.value)||0)/100*amt;
+  const n=y*12;
+  if(!document.getElementById('plPmt'))return;
+  if(r===0||n===0){document.getElementById('plPmt').textContent=fmt(0);return}
+  const p=amt*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  const totalInt=(p*n)-amt;
+  document.getElementById('plPmt').textContent=fmt(p);
+  document.getElementById('plInt').textContent=fmt(totalInt);
+  document.getElementById('plFeeAmt').textContent=fmt(fee);
+  document.getElementById('plTotal').textContent=fmt(amt+totalInt+fee);
+}
+function calcAuto(){
+  const price=+(document.getElementById('aPrice')?.value)||0;
+  const down=+(document.getElementById('aDown')?.value)||0;
+  const trade=+(document.getElementById('aTrade')?.value)||0;
+  const tax=(+(document.getElementById('aTax')?.value)||0)/100;
+  const y=+(document.getElementById('aTerm')?.value)||5;
+  const r=(+(document.getElementById('aRate')?.value)||0)/100/12;
+  const taxable=price-trade;
+  const totalPrice=taxable+(taxable*tax);
+  const loan=totalPrice-down;
+  const n=y*12;
+  if(!document.getElementById('aPmt'))return;
+  if(r===0||n===0){document.getElementById('aPmt').textContent=fmt(0);return}
+  const p=loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  const totalInt=(p*n)-loan;
+  document.getElementById('aPmt').textContent=fmt(p);
+  document.getElementById('aLoan').textContent=fmt(loan);
+  document.getElementById('aInt').textContent=fmt(totalInt);
+  document.getElementById('aTotal').textContent=fmt(totalPrice+totalInt);
+}
+function calcInv(){
+  const P=+(document.getElementById('iStart')?.value)||0;
+  const M=+(document.getElementById('iMonth')?.value)||0;
+  const r=(+(document.getElementById('iRate')?.value)||0)/100/12;
+  const n=(+(document.getElementById('iYears')?.value)||0)*12;
+  if(!document.getElementById('iFinal'))return;
+  let b=P,tc=P;for(let i=0;i<n;i++){b=b*(1+r)+M;tc+=M}
+  document.getElementById('iFinal').textContent=fmt(b);
+  document.getElementById('iContrib').textContent=fmt(tc);
+  document.getElementById('iGrowth').textContent=fmt(b-tc);
+}
+function calcRet(){
+  const age=+(document.getElementById('rAge')?.value)||35;
+  const retAge=+(document.getElementById('rRetAge')?.value)||65;
+  const saved=+(document.getElementById('rSaved')?.value)||0;
+  const M=+(document.getElementById('rMonth')?.value)||0;
+  const r=(+(document.getElementById('rRate')?.value)||0)/100/12;
+  const yrs=retAge-age;
+  const n=yrs*12;
+  if(!document.getElementById('rFinal'))return;
+  let b=saved,tc=saved;for(let i=0;i<n;i++){b=b*(1+r)+M;tc+=M}
+  const retYrs=+(document.getElementById('rYrs')?.value)||25;
+  const monthlyInc=b/(retYrs*12);
+  document.getElementById('rFinal').textContent=fmt(b);
+  document.getElementById('rMonIn').textContent=fmt(monthlyInc);
+  document.getElementById('rContrib').textContent=fmt(tc);
+}
+function calcNW(){
+  if(!document.getElementById('nwAssets'))return;
+  const assets=['nwCash','nwSav','nwInv','nwRet','nwHome','nwCars'].reduce((s,id)=>s+(+(document.getElementById(id)?.value)||0),0);
+  const liab=['nwMort','nwAuto','nwStud','nwCC'].reduce((s,id)=>s+(+(document.getElementById(id)?.value)||0),0);
+  document.getElementById('nwAssets').textContent=fmt(assets);
+  document.getElementById('nwLiab').textContent=fmt(liab);
+  document.getElementById('nwTotal').textContent=fmt(assets-liab);
+  const el=document.getElementById('nwTotal');
+  el.className='result-value big '+(assets-liab>=0?'pos':'neg');
+}
+
+// ===== NEWSLETTER POPUP =====
+let popupShown=false;
+function showNLPopup(){
+  if(popupShown||localStorage.getItem('sc_nl_shown'))return;
+  popupShown=true;
+  const a=Math.floor(Math.random()*9)+1,b=Math.floor(Math.random()*9)+1;
+  window.popupCaptchaAns=a+b;
+  if(document.getElementById('popupCaptcha')){
+    document.getElementById('popupCaptcha').textContent=a+' + '+b;
+    document.getElementById('nlOverlay').classList.add('show');
+  }
+}
+function closeNLPopup(){
+  document.getElementById('nlOverlay').classList.remove('show');
+  localStorage.setItem('sc_nl_shown','1');
+}
+function submitPopupNL(){
+  const email=document.getElementById('popupEmail').value;
+  const ans=+(document.getElementById('popupCaptchaAns').value)||0;
+  if(!email||!email.includes('@')){alert('Please enter a valid email.');return}
+  if(ans!==window.popupCaptchaAns){alert('Wrong answer. Please try the math question again.');return}
+  alert('Thank you for subscribing! Check your inbox for confirmation.');
+  localStorage.setItem('sc_nl_sub',email);
+  closeNLPopup();
+}
+
+// ===== SEARCH =====
+function handleSearch(){}
+function executeSearch(){
+  const el=document.getElementById('searchInput')||document.getElementById('mobileSearch');
+  const q=(el?el.value:'').toLowerCase().trim();
+  if(!q)return;
+  const allBlogs=allPosts();
+  const matches=allBlogs.filter(p=>p.title.toLowerCase().includes(q)||(p.preview&&p.preview.toLowerCase().includes(q)));
+  if(matches.length>0){
+    showPage('blog');
+    setTimeout(()=>openPost(matches[0].id),300);
+  }else{
+    alert('No results found for: '+q+'. Try a different keyword.');
+  }
+  if(el)el.value='';
+}
+
+// ===== READING PROGRESS + BACK TO TOP =====
+function updateReadingProgress(){
+  const scrolled=window.scrollY;
+  const height=document.documentElement.scrollHeight-window.innerHeight;
+  const pct=height>0?(scrolled/height)*100:0;
+  const p=document.getElementById('readingProgress');
+  if(p)p.style.width=pct+'%';
+  const btn=document.getElementById('backToTop');
+  if(btn)btn.classList.toggle('show',scrolled>400);
+}
+window.addEventListener('scroll',updateReadingProgress);
+
+// ===== QUIZZES =====
+const quizzes={
+  card:{
+    title:'Find Your Perfect Credit Card',
+    questions:[
+      {q:'What is most important to you in a credit card?',opts:[
+        {t:'Cash back on everything',v:'cashback'},
+        {t:'Travel rewards and points',v:'travel'},
+        {t:'No annual fee',v:'nofee'},
+        {t:'Building credit',v:'beginner'}
+      ]},
+      {q:'How much do you spend on a credit card monthly?',opts:[
+        {t:'Less than $500',v:'low'},
+        {t:'$500 - $1,500',v:'medium'},
+        {t:'$1,500 - $3,000',v:'high'},
+        {t:'Over $3,000',v:'vhigh'}
+      ]},
+      {q:'What is your credit score?',opts:[
+        {t:'Excellent (750+)',v:'excellent'},
+        {t:'Good (670-749)',v:'good'},
+        {t:'Fair (580-669)',v:'fair'},
+        {t:'Not sure / Building',v:'building'}
+      ]},
+      {q:'How do you feel about annual fees?',opts:[
+        {t:'Happy to pay if rewards are worth it',v:'ok'},
+        {t:'Prefer low fees ($95 or less)',v:'low'},
+        {t:'No annual fee only',v:'none'}
+      ]}
+    ],
+    results:{
+      cashback:{title:'💰 Citi Double Cash Card',desc:'You prioritize simple cashback. The Citi Double Cash earns 2% on every purchase with no annual fee and no category tracking.'},
+      travel:{title:'✈️ Chase Sapphire Preferred',desc:'You love travel rewards. Chase Sapphire Preferred offers 5X on Chase travel, 3X on dining, and a 60,000 point sign-up bonus.'},
+      nofee:{title:'💳 Wells Fargo Active Cash',desc:'You want no fees and solid rewards. Wells Fargo Active Cash gives 2% unlimited cashback, $200 bonus, and zero annual fee.'},
+      beginner:{title:'🌟 Discover it Cash Back',desc:'Perfect for building credit. Discover it offers 5% rotating categories, cashback match in year 1, no annual fee, and accepts limited credit history.'}
+    }
+  },
+  money:{
+    title:'What is Your Money Personality?',
+    questions:[
+      {q:'You get a $1,000 unexpected bonus. What do you do first?',opts:[
+        {t:'Save it all immediately',v:'saver'},
+        {t:'Treat yourself to something nice',v:'spender'},
+        {t:'Invest it for the future',v:'investor'},
+        {t:'Pay off some debt',v:'planner'}
+      ]},
+      {q:'When reviewing your finances, you feel:',opts:[
+        {t:'Anxious and avoid looking',v:'avoider'},
+        {t:'Organized and in control',v:'planner'},
+        {t:'Excited by opportunities',v:'investor'},
+        {t:'Guilty about spending',v:'spender'}
+      ]},
+      {q:'Your biggest money goal is:',opts:[
+        {t:'Building wealth through investing',v:'investor'},
+        {t:'Not living paycheck to paycheck',v:'saver'},
+        {t:'Enjoying life without stress',v:'spender'},
+        {t:'Achieving financial independence',v:'planner'}
+      ]}
+    ],
+    results:{
+      saver:{title:'🏦 The Saver',desc:'You prioritize security and building savings. Your strength is discipline. To level up: ensure you are also investing to beat inflation. Try our Investment Calculator.'},
+      spender:{title:'💎 The Spender',desc:'You believe money is for enjoying life. Your strength is living in the present. To level up: automate savings before you see your paycheck. Try our Budget Planner.'},
+      investor:{title:'📈 The Investor',desc:'You think long-term and enjoy growing money. Your strength is strategic thinking. To level up: make sure you have a 6-month emergency fund as your foundation.'},
+      planner:{title:'📊 The Planner',desc:'You are organized and methodical with money. Your strength is consistency. To level up: balance optimization with enjoyment.'},
+      avoider:{title:'🌱 The Starter',desc:'Money stress feels overwhelming right now. Your strength is self-awareness. To level up: start small. Try our Budget Planner for 10 minutes today.'}
+    }
+  }
+};
+
+let currentQuiz=null,quizAnswers=[],quizStep=0;
+function startQuiz(type){
+  currentQuiz=quizzes[type];
+  quizAnswers=[];quizStep=0;
+  document.getElementById('quizModal').classList.add('show');
+  renderQuizStep();
+}
+function renderQuizStep(){
+  if(quizStep>=currentQuiz.questions.length){showQuizResult();return}
+  const q=currentQuiz.questions[quizStep];
+  const pct=((quizStep)/currentQuiz.questions.length)*100;
+  document.getElementById('qpBar').style.width=pct+'%';
+  document.getElementById('quizContent').innerHTML=`<p style="font-size:.82rem;color:var(--gray-400);margin-bottom:8px">Question ${quizStep+1} of ${currentQuiz.questions.length}</p><div class="quiz-question">${q.q}</div><div class="quiz-options">${q.opts.map(o=>`<button class="quiz-option" onclick="answerQuiz('${o.v}')">${o.t}</button>`).join('')}</div>`;
+}
+function answerQuiz(v){
+  quizAnswers.push(v);quizStep++;
+  renderQuizStep();
+}
+function showQuizResult(){
+  document.getElementById('qpBar').style.width='100%';
+  const counts={};quizAnswers.forEach(a=>{counts[a]=(counts[a]||0)+1});
+  const top=Object.keys(counts).reduce((a,b)=>counts[a]>counts[b]?a:b);
+  const result=currentQuiz.results[top]||Object.values(currentQuiz.results)[0];
+  document.getElementById('quizContent').innerHTML=`<div class="quiz-result"><h3>${result.title}</h3><p>${result.desc}</p><button class="btn btn-purple" style="background:var(--gradient-btn);color:var(--navy);font-weight:700" onclick="showPage('tools');closeQuiz()">Explore Tools →</button><p style="margin-top:12px;font-size:.78rem;color:var(--gray-400)">💡 Educational only. Not financial advice.</p></div>`;
+}
+function closeQuiz(){
+  document.getElementById('quizModal').classList.remove('show');
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded',function(){
   if(!localStorage.getItem('sc_ck')){
@@ -1531,7 +2013,18 @@ document.addEventListener('DOMContentLoaded',function(){
   calcSav();
   calcBud();
   calcDebt();
-  initFHS();
+  if(typeof initFHS==='function')initFHS();
+  calcMort();
+  calcPL();
+  calcAuto();
+  calcInv();
+  calcRet();
+  calcNW();
+  setTimeout(showNLPopup,30000);
+  setTimeout(()=>{
+    const key=localStorage.getItem('sc_apikey');
+    if(key&&document.getElementById('apiKey'))document.getElementById('apiKey').value=key;
+  },500);
 });
 </script>
 </body>
