@@ -6,12 +6,22 @@
 <atom:link href="https://savingsclub.com/rss.xml" rel="self" type="application/rss+xml" />
 <description>Free personal finance education, calculators, and money guides for Americans in every state.</description>
 <language>en-us</language>
-<lastBuildDate>Fri, 28 Aug 2026 22:49:35 GMT</lastBuildDate>
+<lastBuildDate>Mon, 07 Sep 2026 18:01:22 GMT</lastBuildDate>
 <image>
 <url>https://savingsclub.com/img/sc-logo-full.png</url>
 <title>SavingsClub Blog</title>
 <link>https://savingsclub.com/blog/</link>
 </image>
+  <item>
+    <title>Michigan property tax: How it works and what you will pay</title>
+    <link>https://savingsclub.com/blog/michigan-property-tax-how-it-works-and-what-you-will-pay/</link>
+    <guid isPermaLink="true">https://savingsclub.com/blog/michigan-property-tax-how-it-works-and-what-you-will-pay/</guid>
+    <pubDate>Mon, 07 Sep 2026 18:01:22 GMT</pubDate>
+    <category>Taxes</category>
+    <description><![CDATA[If you just bought a home in Michigan, or you're thinking about it, your property tax bill might be one of the biggest surprises waiting for you. Many new homeowners open that first tax notice and feel genuine shock.]]></description>
+    <enclosure url="https://images.unsplash.com/photo-1758876020300-76a782ca51c6?ixid=M3w5NjMyOTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODg4MDQwODJ8&amp;ixlib=rb-4.1.0&amp;w=1200&amp;q=75&amp;auto=format" type="image/jpeg" />
+    <media:content url="https://images.unsplash.com/photo-1758876020300-76a782ca51c6?ixid=M3w5NjMyOTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODg4MDQwODJ8&amp;ixlib=rb-4.1.0&amp;w=1200&amp;q=75&amp;auto=format" medium="image" />
+  </item>
   <item>
     <title>Illinois state income tax rate: What you actually pay in 2026</title>
     <link>https://savingsclub.com/blog/illinois-state-income-tax-rate-what-you-actually-pay-in-2026/</link>
